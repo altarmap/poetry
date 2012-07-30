@@ -6,10 +6,10 @@ class Header extends Modulize {
 	public function __construct() {
 		parent::__construct();
 
+		require_once(dirname(__FILE__).'\..\middleware\supper\MWLib.php');
+		$MWLib= MWLib::getInstance();
+		$smarty= $MWLib->getPackage("Smarty");
 		$SearchBox = new SearchBox();
-		//$SearchBox= SearchBox::getInstance();
-		$smarty= $SearchBox->getPackage('Smarty');
-		$smarty -> assign('logoTip', 'Header');
 		$smarty -> assign('SearchBox', $smarty->display('SearchBox.tpl'));
 	}
 	public function __toString() {
