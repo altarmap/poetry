@@ -1,7 +1,6 @@
 <div class="contentHeader">
 	<div class="mainHeader">
-		Header
-		<a><img src="" title="{$logoTip}"/></a>
+		Search
 		{$SearchBox}
 		{$Login}
 	</div>
