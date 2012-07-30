@@ -1,16 +1,14 @@
 <?php
 require_once(dirname(__FILE__).'\..\middleware\supper\Modulize.php');
-require_once(dirname(__FILE__).'\SearchBox.php');
+require_once(dirname(__FILE__).'\..\module\Login.php');
 
 class Header extends Modulize {
 	public function __construct() {
 		parent::__construct();
-
-		require_once(dirname(__FILE__).'\..\middleware\supper\MWLib.php');
-		$MWLib= MWLib::getInstance();
-		$smarty= $MWLib->getPackage("Smarty");
-		$SearchBox = new SearchBox();
-		$smarty -> assign('SearchBox', $smarty->display('SearchBox.tpl'));
+		$login= new Login;
+		$SearchBox= new Login;
+		$this-> assign("Login", $login-> display("login.tpl"));
+		$this-> assign("SearchBox", $SearchBox-> display("SearchBox.tpl"));
 	}
 	public function __toString() {
 		return "Class::Header";
