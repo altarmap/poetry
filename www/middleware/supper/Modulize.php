@@ -1,14 +1,13 @@
 <?php
 require_once "iModulize.php";
 require_once(dirname(__FILE__).'\..\..\middleware\supper\MWLib.php');
-class Modulize implements IModulize{
-	protected $_mwLib;
+class Modulize implements IModulize{	
 	protected $_smarty;
 	protected $_fetch;
 	protected $tplURL;
 	function __construct(){		
-		$this-> _mwLib= MWLib::getInstance();
-		$this -> smarty = $this-> _mwLib-> getPackage("Smarty");
+		$mwLib= MWLib::getInstance();
+		$this -> smarty = $mwLib-> getPackage("Smarty");
 		$this -> smarty -> addTemplateDir(dirname(__FILE__)."\..\..\module_templates");	
 	}
 	public function display($tpl){		

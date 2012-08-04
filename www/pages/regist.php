@@ -1,11 +1,9 @@
 <?php
-require_once(dirname(__FILE__).'\..\middleware\supper\MWLib.php');
-$MWLib= MWLib::getInstance();
-$smarty= $MWLib->getPackage("Smarty");
-
-require_once(dirname(__FILE__).'\..\module\Header.php');
-$header= new Header();
-$smarty -> assign("header", $header->display("header.tpl"));
-//$smarty -> assign("footer", "");
-$smarty->display("standardTemplate.tpl");
+require_once(dirname(__FILE__).'\..\middleware\supper\Altarmap.php');
+require_once(dirname(__FILE__).'\..\layout\StandardLayout.php');
+$altarmap= Altarmap::getInstance();
+$altarmap-> layout = new StandardLayout;
+$altarmap-> setContent("regist.tpl");
+$altarmap->assign('name', '123');
+$altarmap-> display();
 ?>
