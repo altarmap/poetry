@@ -6,4 +6,5 @@ $altarmap-> layout = new StandardLayout;
 $altarmap-> setContent("regist.tpl");
 $altarmap->assign('name', '123');
 $altarmap-> display();
+//joshua tai 2
 ?>
