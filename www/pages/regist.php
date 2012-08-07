@@ -1,4 +1,5 @@
 <?php
+//joshua tai 2
 require_once(dirname(__FILE__).'\..\middleware\supper\Altarmap.php');
 require_once(dirname(__FILE__).'\..\layout\StandardLayout.php');
 $altarmap= Altarmap::getInstance();
