@@ -1,5 +1,5 @@
 <?php
-header ("Content-Type:text/xml"); 
+//header ("Content-Type:text/xml"); 
 $resultXMLString;
 $pages= array();
 $count= 1;
@@ -73,6 +73,21 @@ function getMore($start){
 		}
 	};
 }
+
+// 先create keyword sha1 file
+$keyword_folder_name = substr($keyword_sha1, 0, 2);
+$keyword_file_name = substr($keyword_sha1, 2);
+if(!file_exists($keyword_folder_name.'/'.$keyword_file_name.'.txt')){
+	if(!is_dir($keyword_folder_name)) {
+		if (!mkdir($keyword_folder_name, 0, true)) {
+			die('Failed to create folders...');
+		}
+		$fp = fopen($keyword_folder_name.'/'.$keyword_file_name.'.txt', 'w');
+		fclose($fp);
+	}
+}
+////
+
 if(query(getURL(0))) {
 	if($resultXML -> responseData -> cursor -> pages){
 		foreach($resultXML -> responseData -> cursor -> pages -> item as $key => $value) {
@@ -90,6 +105,24 @@ if(query(getURL(0))) {
 		getMore(array_pop($pages));
 	}
 }
+
+
+
+
+// 判斷keyword sha1 file的內容是否有上一筆查詢xml_sha1
+$handle = fopen($keyword_folder_name.'/'.$keyword_file_name.'.txt', "r");
+if( $handle == true) { 
+	while (!feof($handle))
+	{
+		$get_lastquery_sha1 = fgets($handle);
+		$exportXML -> addChild('lastquery', $get_lastquery_sha1);
+	}
+	fclose($handle);
+}
+////
+
+
+
 echo $exportXML -> asXML();
 $xml_sha1 = sha1($exportXML -> asXML());
 $folder_name = substr($xml_sha1, 0, 2);
@@ -101,36 +134,12 @@ if(!is_dir($folder_name)){
 	}
 }
 $exportXML-> asXML($folder_name."/".$file_name.".xml"); 
-/*
 
-if(count($pages) > 0) {
-	array_reverse($pages);
-	getMore(array_pop($pages));
-}*/
-/*
-echo $resultXML-> responseStatus;
-*/
-/*
-
-echo sha1($xml)."<br><br>";
-echo "[取得xml_sha1的前兩位元]<br>";
-
-echo $folder_name."<br><br>";
-
-if(!is_dir($folder_name)){
-	if (mkdir($folder_name, 0, true)) {
-		echo "建立folder_name資料夾: ". $folder_name. "<br>";
-	}
-	else {
-		die('Failed to create folders...');
-	}
-}
-
-echo "建立檔案: ". $folder_name.'/'.$xml_sha1.".txt<br>";
-$xml_content = arrayParser($array);
-
-$fp = fopen($folder_name.'/'.$xml_sha1.'.txt', 'w');
-fwrite($fp, $xml_content);
+// 更新keyword sha1 file的內容
+unlink($keyword_folder_name.'/'.$keyword_file_name.'.txt');
+$fp = fopen($keyword_folder_name.'/'.$keyword_file_name.'.txt', 'w');
+fwrite($fp, $xml_sha1);
 fclose($fp);
-*/
+////	
+
 ?>
