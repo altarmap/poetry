@@ -1,14 +1,29 @@
 <?php
-//header ("Content-Type:text/xml"); 
+header ("Content-Type:text/xml"); 
 $resultXMLString;
 $pages= array();
 $count= 1;
-$limit= 4;
+$limit= 5;
 $resultXML;
 $exportXML = new SimpleXMLElement('<root></root>');
 $exportRepeater= $exportXML -> addChild('repeater');
 $keyword= $_POST['searchquery'];
 $keyword_sha1 = sha1($keyword);
+function _symlink( $target, $link ) {	
+  if ($_SERVER['WINDIR'] || $_SERVER['windir']) {	
+    exec('mklink "' . $link . '" "' . $target . '"');
+  } else {
+    symlink($target,$link);
+  } 
+  //exec('type "head\\' . $keyword_sha1.'"');
+}
+function _deleteLink($link) {
+  if ($_SERVER['WINDIR'] || $_SERVER['windir']) {	
+    exec('del "' . $link . '"');
+  } else {
+    unlink($link);
+  }
+}
 function queryGoogle($url){
 	$handle = fopen($url, 'rb');
 	$body = '';
@@ -73,21 +88,6 @@ function getMore($start){
 		}
 	};
 }
-
-// 先create keyword sha1 file
-$keyword_folder_name = substr($keyword_sha1, 0, 2);
-$keyword_file_name = substr($keyword_sha1, 2);
-if(!file_exists($keyword_folder_name.'/'.$keyword_file_name.'.txt')){
-	if(!is_dir($keyword_folder_name)) {
-		if (!mkdir($keyword_folder_name, 0, true)) {
-			die('Failed to create folders...');
-		}
-		$fp = fopen($keyword_folder_name.'/'.$keyword_file_name.'.txt', 'w');
-		fclose($fp);
-	}
-}
-////
-
 if(query(getURL(0))) {
 	if($resultXML -> responseData -> cursor -> pages){
 		foreach($resultXML -> responseData -> cursor -> pages -> item as $key => $value) {
@@ -105,25 +105,7 @@ if(query(getURL(0))) {
 		getMore(array_pop($pages));
 	}
 }
-
-
-
-
-// 判斷keyword sha1 file的內容是否有上一筆查詢xml_sha1
-$handle = fopen($keyword_folder_name.'/'.$keyword_file_name.'.txt', "r");
-if( $handle == true) { 
-	while (!feof($handle))
-	{
-		$get_lastquery_sha1 = fgets($handle);
-		$exportXML -> addChild('lastquery', $get_lastquery_sha1);
-	}
-	fclose($handle);
-}
-////
-
-
-
-echo $exportXML -> asXML();
+//echo $exportXML -> asXML();
 $xml_sha1 = sha1($exportXML -> asXML());
 $folder_name = substr($xml_sha1, 0, 2);
 $file_name = substr($xml_sha1, 2);
@@ -133,13 +115,43 @@ if(!is_dir($folder_name)){
 		return;
 	}
 }
-$exportXML-> asXML($folder_name."/".$file_name.".xml"); 
+//$exportXML-> asXML($folder_name."/".$file_name.".xml");
 
-// 更新keyword sha1 file的內容
-unlink($keyword_folder_name.'/'.$keyword_file_name.'.txt');
-$fp = fopen($keyword_folder_name.'/'.$keyword_file_name.'.txt', 'w');
-fwrite($fp, $xml_sha1);
+if(file_exists('head\\' . $keyword_sha1)){
+	_deleteLink('head\\' . $keyword_sha1);
+}
+_symlink($folder_name."\\".$file_name.".xml", 'head\\' . $keyword_sha1);
+
+/*
+
+if(count($pages) > 0) {
+	array_reverse($pages);
+	getMore(array_pop($pages));
+}*/
+/*
+echo $resultXML-> responseStatus;
+*/
+/*
+
+echo sha1($xml)."<br><br>";
+echo "[取得xml_sha1的前兩位元]<br>";
+
+echo $folder_name."<br><br>";
+
+if(!is_dir($folder_name)){
+	if (mkdir($folder_name, 0, true)) {
+		echo "建立folder_name資料夾: ". $folder_name. "<br>";
+	}
+	else {
+		die('Failed to create folders...');
+	}
+}
+
+echo "建立檔案: ". $folder_name.'/'.$xml_sha1.".txt<br>";
+$xml_content = arrayParser($array);
+
+$fp = fopen($folder_name.'/'.$xml_sha1.'.txt', 'w');
+fwrite($fp, $xml_content);
 fclose($fp);
-////	
-
+*/
 ?>
