@@ -1,28 +1,30 @@
 <?php
-header ("Content-Type:text/xml"); 
+//header ("Content-Type:text/xml"); 
 $resultXMLString;
 $pages= array();
 $count= 1;
-$limit= 5;
+$limit= 4;
 $resultXML;
 $exportXML = new SimpleXMLElement('<root></root>');
+$searchinfoXML = new SimpleXMLElement('<searchinfo></searchinfo>');
+$keywordXML = new SimpleXMLElement('<keyword></keyword>');
 $exportRepeater= $exportXML -> addChild('repeater');
 $keyword= $_POST['searchquery'];
 $keyword_sha1 = sha1($keyword);
-function _symlink( $target, $link ) {	
-  if ($_SERVER['WINDIR'] || $_SERVER['windir']) {	
-    exec('mklink "' . $link . '" "' . $target . '"');
-  } else {
-    symlink($target,$link);
-  } 
-  //exec('type "head\\' . $keyword_sha1.'"');
+$keyword_folder_name = 'head';
+$lastsearchinfo = '';
+class MyDateTime extends DateTime {
+    public function getTimestamp() {
+         return method_exists('DateTime', 'getTimestamp') ? 
+             parent::getTimestamp() : $this->format('U');
+    }
 }
-function _deleteLink($link) {
-  if ($_SERVER['WINDIR'] || $_SERVER['windir']) {	
-    exec('del "' . $link . '"');
-  } else {
-    unlink($link);
-  }
+
+$datetime = new MyDateTime();
+
+function getNowTimestamp() {
+	$date = new DateTime();
+	return $date -> getTimestamp();
 }
 function queryGoogle($url){
 	$handle = fopen($url, 'rb');
@@ -88,6 +90,7 @@ function getMore($start){
 		}
 	};
 }
+
 if(query(getURL(0))) {
 	if($resultXML -> responseData -> cursor -> pages){
 		foreach($resultXML -> responseData -> cursor -> pages -> item as $key => $value) {
@@ -105,6 +108,7 @@ if(query(getURL(0))) {
 		getMore(array_pop($pages));
 	}
 }
+
 //echo $exportXML -> asXML();
 $xml_sha1 = sha1($exportXML -> asXML());
 $folder_name = substr($xml_sha1, 0, 2);
@@ -115,43 +119,58 @@ if(!is_dir($folder_name)){
 		return;
 	}
 }
-//$exportXML-> asXML($folder_name."/".$file_name.".xml");
-
-if(file_exists('head\\' . $keyword_sha1)){
-	_deleteLink('head\\' . $keyword_sha1);
+if(!file_exists($folder_name."/".$file_name.".xml")) {
+	$exportXML-> asXML($folder_name."/".$file_name.".xml"); 
 }
-_symlink($folder_name."\\".$file_name.".xml", 'head\\' . $keyword_sha1);
 
-/*
-
-if(count($pages) > 0) {
-	array_reverse($pages);
-	getMore(array_pop($pages));
-}*/
-/*
-echo $resultXML-> responseStatus;
-*/
-/*
-
-echo sha1($xml)."<br><br>";
-echo "[取得xml_sha1的前兩位元]<br>";
-
-echo $folder_name."<br><br>";
-
-if(!is_dir($folder_name)){
-	if (mkdir($folder_name, 0, true)) {
-		echo "建立folder_name資料夾: ". $folder_name. "<br>";
+// 判斷keyword sha1 file的內容是否有上一筆查詢xml_sha1
+if(file_exists($keyword_folder_name.'/'.$keyword_sha1.'.xml') == true) {
+	$xml = simplexml_load_file($keyword_folder_name.'/'.$keyword_sha1.'.xml');
+	
+	$children = $xml->children();
+	//print_r($children);
+	foreach($children as $key => $value) {
+		if($key == 'lastsearchinfo') {
+			$lastsearchinfo = $value;
+			$searchinfoXML -> addChild('previoussearchinfo', $lastsearchinfo);
+		}
 	}
-	else {
+}
+////
+// search info XML file 加入 this time search result sha1
+$searchinfoXML -> addChild('resultsha1', $xml_sha1);
+$searchinfo_sha1 = sha1($searchinfoXML -> asXML());
+$searchinfo_folder_name = substr($searchinfo_sha1, 0, 2);
+$searchinfo_file_name = substr($searchinfo_sha1, 2);
+// create search info xml file
+if(!is_dir($searchinfo_folder_name)){
+	if (!mkdir($searchinfo_folder_name, 0, true)) {
 		die('Failed to create folders...');
+		return;
 	}
 }
+if(!file_exists($searchinfo_folder_name."/".$searchinfo_file_name.".xml")) {
+	$searchinfoXML -> asXML($searchinfo_folder_name."/".$searchinfo_file_name.".xml"); 
+}
+////
 
-echo "建立檔案: ". $folder_name.'/'.$xml_sha1.".txt<br>";
-$xml_content = arrayParser($array);
 
-$fp = fopen($folder_name.'/'.$xml_sha1.'.txt', 'w');
-fwrite($fp, $xml_content);
-fclose($fp);
-*/
+
+// 更新keyword sha1 file的內容
+if(file_exists($keyword_folder_name.'/'.$keyword_sha1.'.xml') == true) {
+	unlink($keyword_folder_name.'/'.$keyword_sha1.'.xml');
+}
+else {
+// create keyword folder
+	if(!is_dir($keyword_folder_name)) {
+		if (!mkdir($keyword_folder_name, 0, true)) {
+			die('Failed to create folders...');
+		}
+	}
+}
+$keywordXML -> addChild('lastsearchinfo', $searchinfo_sha1);
+$keywordXML -> addChild('timestamp', $datetime -> getTimestamp());
+$keywordXML -> asXML($keyword_folder_name.'/'.$keyword_sha1.'.xml');
+////	
+
 ?>
