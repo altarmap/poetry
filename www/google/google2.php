@@ -1,31 +1,28 @@
 <?php
-//header ("Content-Type:text/xml"); 
+//header( 'Content-Type: text/xml ');
+//if ( defined('__DIR__') ) {	$__DIR__ = __DIR__;} else {	$__DIR__ = dirname(__FILE__);}
+require_once(dirname(__FILE__) . "/supper/Search/Search.php");
+require_once(dirname(__FILE__) . "/supper/aDateTime/aDateTime.php");
+$search = new Search();
+$search-> setKeyword($_POST["searchquery"]);
+$search-> query();
+
+/*
 $resultXMLString;
 $pages= array();
 $count= 1;
 $limit= 4;
 $resultXML;
 $exportXML = new SimpleXMLElement('<root></root>');
-$searchinfoXML = new SimpleXMLElement('<searchinfo></searchinfo>');
-$keywordXML = new SimpleXMLElement('<keyword></keyword>');
+$searchinfoXML = new SimpleXMLElement('<root></root>');
+$keywordXML = new SimpleXMLElement('<root></root>');
 $exportRepeater= $exportXML -> addChild('repeater');
 $keyword= $_POST['searchquery'];
 $keyword_sha1 = sha1($keyword);
 $keyword_folder_name = 'head';
-$lastsearchinfo = '';
-class MyDateTime extends DateTime {
-    public function getTimestamp() {
-         return method_exists('DateTime', 'getTimestamp') ? 
-             parent::getTimestamp() : $this->format('U');
-    }
-}
+$searchID = '';
 
-$datetime = new MyDateTime();
-
-function getNowTimestamp() {
-	$date = new DateTime();
-	return $date -> getTimestamp();
-}
+$datetime = new aDateTime();
 function queryGoogle($url){
 	$handle = fopen($url, 'rb');
 	$body = '';
@@ -35,26 +32,7 @@ function queryGoogle($url){
 	fclose($handle);
 	return $body;
 }
-function arrayParser($array) {    
-	foreach($array as $key => $value) {			
-		// 沒有空白和折行
-		if(is_array($value)){
-			if(preg_match('/[^0-9]/i',$key, $arrayMatch)){
-				$GLOBALS['resultXMLString'] .= '<'.$key.'>';
-				arrayParser($value);
-				$GLOBALS['resultXMLString'] .= '</'.$key.'>';
-			}else{				
-				$GLOBALS['resultXMLString'] .= '<item>';
-				arrayParser($value);
-				$GLOBALS['resultXMLString'] .= '</item>';				
-			}            
-		} else {						
-			if(preg_match('/[^0-9]/i',$key, $arrayMatch)){
-				$GLOBALS['resultXMLString'] .= '<'.$key.'>'.rawurlencode($value).'</'.$key.'>';				
-			}
-		}
-	}
-}
+
 function setData($items) {	
 	foreach($items as $value) {	
 		//echo rawurldecode($value -> url);		
@@ -109,7 +87,7 @@ if(query(getURL(0))) {
 	}
 }
 
-//echo $exportXML -> asXML();
+
 $xml_sha1 = sha1($exportXML -> asXML());
 $folder_name = substr($xml_sha1, 0, 2);
 $file_name = substr($xml_sha1, 2);
@@ -130,15 +108,15 @@ if(file_exists($keyword_folder_name.'/'.$keyword_sha1.'.xml') == true) {
 	$children = $xml->children();
 	//print_r($children);
 	foreach($children as $key => $value) {
-		if($key == 'lastsearchinfo') {
-			$lastsearchinfo = $value;
-			$searchinfoXML -> addChild('previoussearchinfo', $lastsearchinfo);
+		if($key == 'searchID') {
+			$searchID = $value;
+			$searchinfoXML -> addChild('previousID', $searchID);
 		}
 	}
 }
 ////
 // search info XML file 加入 this time search result sha1
-$searchinfoXML -> addChild('resultsha1', $xml_sha1);
+$searchinfoXML -> addChild('resultID', $xml_sha1);
 $searchinfo_sha1 = sha1($searchinfoXML -> asXML());
 $searchinfo_folder_name = substr($searchinfo_sha1, 0, 2);
 $searchinfo_file_name = substr($searchinfo_sha1, 2);
@@ -152,25 +130,20 @@ if(!is_dir($searchinfo_folder_name)){
 if(!file_exists($searchinfo_folder_name."/".$searchinfo_file_name.".xml")) {
 	$searchinfoXML -> asXML($searchinfo_folder_name."/".$searchinfo_file_name.".xml"); 
 }
-////
-
-
-
 // 更新keyword sha1 file的內容
 if(file_exists($keyword_folder_name.'/'.$keyword_sha1.'.xml') == true) {
 	unlink($keyword_folder_name.'/'.$keyword_sha1.'.xml');
 }
 else {
-// create keyword folder
+    //create keyword folder
 	if(!is_dir($keyword_folder_name)) {
 		if (!mkdir($keyword_folder_name, 0, true)) {
 			die('Failed to create folders...');
 		}
 	}
 }
-$keywordXML -> addChild('lastsearchinfo', $searchinfo_sha1);
+$keywordXML -> addChild('searchID', $searchinfo_sha1);
 $keywordXML -> addChild('timestamp', $datetime -> getTimestamp());
 $keywordXML -> asXML($keyword_folder_name.'/'.$keyword_sha1.'.xml');
-////	
-
+*/
 ?>
