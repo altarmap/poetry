@@ -43,13 +43,16 @@ if(file_exists($xml_folder_name.'/'.$xml_file_name.'.xml') == true) {
 	$xml = simplexml_load_file($xml_folder_name.'/'.$xml_file_name.'.xml');
 	$children = $xml -> children();
 	
+	$i = 0;
 	foreach($children as $key => $value) {
 		if($key == 'repeater') {
 			$items = $value;
 			foreach($items as $key => $value) {
-				echo $key. ' ==> '. $value. '<br>';
-				$item = $repeater -> addChild($key);
-				$element = $value;
+				//echo $key. ' ==> '. $value. '<br>';
+				
+				$item = $repeater -> addChild($key);			
+				$element = $value;				
+				
 				foreach($element as $key => $value) {
 					if($key == 'url') {
 						$url = $value;
@@ -57,16 +60,19 @@ if(file_exists($xml_folder_name.'/'.$xml_file_name.'.xml') == true) {
 						
 						// ¨ú±ourl ªº content
 						try {
-							/*$ch = curl_init();
-							curl_setopt ($ch, CURLOPT_URL, $url);
-							curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1); 
-							curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT,10);
-							$cotnent = curl_exec($ch); 
-							curl_close($ch); */
-
-							$cotnent = file_get_contents($url);
+							//$ch = curl_init();
+							//curl_setopt ($ch, CURLOPT_URL, $url);
+							//curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1); 
+							//curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT,10);
+							//$cotnent = curl_exec($ch); 
+							//curl_close($ch); 
+							
+							//$cotnent = file_get_contents($url);	
+							if(file_get_contents($url) != false) {
+								$cotnent = file_get_contents($url);
+							}
+							//$cotnent = '123';
 							$content_sha1 = sha1($cotnent);
-							//$item = $repeater -> addChild('item');
 							$item -> addChild('url', $url);
 							$item -> addChild('contentsha1', $content_sha1);
 							//echo $content_sha1. '<br>';
@@ -94,22 +100,23 @@ if(file_exists($xml_folder_name.'/'.$xml_file_name.'.xml') == true) {
 						}
 					}
 				}
-				$urlXNL_sha1 = sha1($urlXML);
-				$urlXNL_folder_name = substr($urlXNL_sha1, 0, 2);
-				$urlXNL_file_name = substr($urlXNL_sha1, 2);
-				
-				if(!file_exists($urlXNL_folder_name. '/'. $urlXNL_file_name. '.xml')) {
-					if(!is_dir($urlXNL_folder_name)) {
-						if (!mkdir($urlXNL_folder_name, 0, true)) {
-							die('Failed to create folders...');
-							return;
-						}
-					}
-					$urlXML -> asXML($urlXNL_folder_name. '/'. $urlXNL_file_name. '.xml');
-					echo '<br>'.$urlXNL_folder_name. '/'. $urlXNL_file_name. '.xml';
-				}
 			}
 		}
+	}
+	$urlXNL_sha1 = sha1($urlXML);
+	$urlXNL_folder_name = substr($urlXNL_sha1, 0, 2);
+	$urlXNL_file_name = substr($urlXNL_sha1, 2);
+	
+	echo '<br>'.$urlXNL_folder_name. '/'. $urlXNL_file_name. '.xml';
+	
+	if(!file_exists($urlXNL_folder_name. '/'. $urlXNL_file_name. '.xml')) {
+		if(!is_dir($urlXNL_folder_name)) {
+			if (!mkdir($urlXNL_folder_name, 0, true)) {
+				die('Failed to create folders...');
+				return;
+			}
+		}
+		$urlXML -> asXML($urlXNL_folder_name. '/'. $urlXNL_file_name. '.xml');
 	}
 }
 
