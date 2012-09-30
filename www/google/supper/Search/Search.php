@@ -27,7 +27,7 @@ class Search implements ISearch {
 				$type = ErrorMessages::TYPE_INVALID;
 				$msg = ErrorMessages::getErrorMsg ( $type );
 				$code = ErrorMessages::getErrorCode( $type );				
-				throw new Exception($msg . " = " . $keyword, $code);
+				throw new Exception($msg . " = " . $keyword, $code); //php 內建 Exception class
 				break;
 			}
 		} catch(Exception $e) {			
@@ -36,8 +36,10 @@ class Search implements ISearch {
 	}
 	public function setAPI ( $api = null ) {
 		try {
-			if($api instanceof IAPI) {
+			if($api instanceof IAPI) {  //判別類別間繼承關係之用
 				$this-> _api = $api;
+				//echo $this-> _api;
+				$this-> _api-> setSearch($this);  //讓兩個class 能彼此溝通，$this of argument是instance object of the search class
 			} else {
 				$type = ErrorMessages::API_INAVAILABLE;
 				$msg = ErrorMessages::getErrorMsg ( $type );
@@ -53,7 +55,7 @@ class Search implements ISearch {
 			return false;
 		} else {
 			$this-> _api-> setKeyword(urlencode($this-> _keyword));
-			$method = strtoupper($this->_api-> getMethod());
+			$method = strtoupper($this->_api-> getMethod()); //strtoupper() 將字母轉成大寫
 			switch ( $method ) {
 			case "GET":				
 				$url = $this-> _api-> getURL();
@@ -61,14 +63,16 @@ class Search implements ISearch {
 				foreach ($this-> _api-> getParams() as $key => $value) {
 					array_push($params, $key . "=" . $value);
 				}				
-				$handle = fopen($url . "?" . implode ("&", $params), 'rb');				
+				//echo $url . "?" . implode ("&", $params). "<br>";
+				$handle = fopen($url . "?" . implode ("&", $params), 'rb');	//implode() 串接value of array	
 				$body = "";
 				while (!feof($handle)) {
 					$body .= fread($handle, 8192);
 				}
 				fclose($handle);
 				$this-> _result = $body;
-				$this-> _api-> isMore($this-> _result);
+				//echo $this-> _result;
+				$this-> _api-> setResult($this-> _result);
 				break;
 			case "POST":
 				break;
