@@ -27,7 +27,7 @@ class Search implements ISearch {
 				$type = ErrorMessages::TYPE_INVALID;
 				$msg = ErrorMessages::getErrorMsg ( $type );
 				$code = ErrorMessages::getErrorCode( $type );				
-				throw new Exception($msg . " = " . $keyword, $code); //php å…§å»º Exception class
+				throw new Exception($msg . " = " . $keyword, $code);
 				break;
 			}
 		} catch(Exception $e) {			
@@ -36,10 +36,9 @@ class Search implements ISearch {
 	}
 	public function setAPI ( $api = null ) {
 		try {
-			if($api instanceof IAPI) {  //åˆ¤åˆ¥é¡žåˆ¥é–“ç¹¼æ‰¿é—œä¿‚ä¹‹ç”¨
+			if($api instanceof IAPI) {  //§P§OÃþ§O¶¡Ä~©ÓÃö«Y¤§¥Î
 				$this-> _api = $api;
-				//echo $this-> _api;
-				$this-> _api-> setSearch($this);  //è®“å…©å€‹class èƒ½å½¼æ­¤æºé€šï¼Œ$this of argumentæ˜¯instance object of the search class
+				$this-> _api-> setSearch($this);
 			} else {
 				$type = ErrorMessages::API_INAVAILABLE;
 				$msg = ErrorMessages::getErrorMsg ( $type );
@@ -55,23 +54,23 @@ class Search implements ISearch {
 			return false;
 		} else {
 			$this-> _api-> setKeyword(urlencode($this-> _keyword));
-			$method = strtoupper($this->_api-> getMethod()); //strtoupper() å°‡å­—æ¯è½‰æˆå¤§å¯«
+			$method = strtoupper($this->_api-> getMethod());
 			switch ( $method ) {
-			case "GET":				
+			case "GET":
 				$url = $this-> _api-> getURL();
 				$params = array();
 				foreach ($this-> _api-> getParams() as $key => $value) {
 					array_push($params, $key . "=" . $value);
-				}				
+				}
 				//echo $url . "?" . implode ("&", $params). "<br>";
-				$handle = fopen($url . "?" . implode ("&", $params), 'rb');	//implode() ä¸²æŽ¥value of array	
+				$handle = fopen($url . "?" . implode ("&", $params), 'rb');				
 				$body = "";
 				while (!feof($handle)) {
 					$body .= fread($handle, 8192);
 				}
 				fclose($handle);
 				$this-> _result = $body;
-				//echo $this-> _result;
+				echo $this-> _result;
 				$this-> _api-> setResult($this-> _result);
 				break;
 			case "POST":
