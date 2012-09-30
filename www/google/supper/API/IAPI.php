@@ -1,10 +1,11 @@
 <?php
 interface IAPI {
-	public function parseResult( $result = "" );	
 	public function getMethod ();
 	public function getParams ();
+	public function setSearch ( $searchObj );
 	public function setKeyword ( $keyword = "" );
+	public function setResult ( $reult = "" );
+	public function export ();
 	public function getURL ();
-	public function isMore ( $result = "" );
 }
 ?>
