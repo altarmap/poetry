@@ -43,19 +43,17 @@ class GoogleAPI implements IAPI {
 	public function export() {
 		$count = count($this-> _storageResult);
 		$this-> _exportXML = new SimpleXMLElement('<root></root>');
-		echo $this-> _tmpResultXML-> asXML();
-		if($count > 0) {
+		//echo $this-> _tmpResultXML-> asXML();
+		if($count > 0) {	
 			for( $i =0; $i < $count; $i += 1) {
-				//$this-> _storageResult[$i]
+				$item = $this-> _storageResult[$i]-> responseData -> results -> item;			
+				$itemNode= $this-> _exportXML -> addChild('item');
+				$urlNode= $itemNode -> addChild('url', rawurldecode($item -> url));
+				$visibleUrl= $itemNode -> addChild('visibleUrl', rawurldecode($item -> visibleUrl));	
+				$cacheUrl= $itemNode -> addChild('cacheUrl', rawurldecode($item -> cacheUrl));
 			}
-			/*foreach($items as $value) {	
-				//echo rawurldecode($value -> url);		
-				$itemNode= $GLOBALS['exportRepeater'] -> addChild('item');
-				$urlNode= $itemNode -> addChild('url', rawurldecode($value -> url));
-				$visibleUrl= $itemNode -> addChild('visibleUrl', rawurldecode($value -> visibleUrl));	
-				$cacheUrl= $itemNode -> addChild('cacheUrl', rawurldecode($value -> cacheUrl));
-			}*/
 		}
+		echo $this-> _exportXML-> asXML();
 		return $this-> _exportXML;		
 	}
 	protected function _convert2XML ( $result = "") {
