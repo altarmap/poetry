@@ -8,5 +8,15 @@ $google = new GoogleAPI();
 $search-> setAPI($google);
 //echo $search-> getKeyword();
 $search-> query();
-$google-> export();
+//echo $google-> export() -> asXML();
+$current = time();
+$end = $current + 25;
+$i = true;
+while($i == true) {
+	$now = time();
+	if( $now == $end) {
+		$i = false;
+		echo $google-> export() -> asXML();
+	}
+}	
 ?>
