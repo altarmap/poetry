@@ -70,7 +70,7 @@ class Search implements ISearch {
 				}
 				fclose($handle);
 				$this-> _result = $body;
-				echo $this-> _result;
+				//echo $this-> _result;
 				$this-> _api-> setResult($this-> _result);
 				break;
 			case "POST":
