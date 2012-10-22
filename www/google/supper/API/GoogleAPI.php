@@ -16,7 +16,7 @@ class GoogleAPI implements IAPI {
 	protected $_tmpResultXML = null;
 	protected $_exportResult = null;	
 	protected $_currentItem= 0;
-	public $limit = 2;
+	public $limit = 5;
 	public function setSearch ( $searchObj ) {
 		$this-> _searchObj = $searchObj;
 	}
@@ -30,7 +30,9 @@ class GoogleAPI implements IAPI {
 	public function setKeyword( $keyword = "" ) {
 		$this-> _params["q"] = $keyword;
 	}
-	
+	public function getKeyword () {
+		return $this-> _params["q"];
+	}
 	public function getParams (){
 		return $this-> _params;
 	}
@@ -52,8 +54,7 @@ class GoogleAPI implements IAPI {
 				$visibleUrl= $itemNode -> addChild('visibleUrl', rawurldecode($item -> visibleUrl));	
 				$cacheUrl= $itemNode -> addChild('cacheUrl', rawurldecode($item -> cacheUrl));
 			}
-		}
-		echo $this-> _exportXML-> asXML();
+		}		
 		return $this-> _exportXML;		
 	}
 	protected function _convert2XML ( $result = "") {
@@ -100,6 +101,4 @@ class GoogleAPI implements IAPI {
 		return "[Class::GoogleAPI]";
 	}
 }
-
-
 ?>
