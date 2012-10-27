@@ -52,7 +52,6 @@ class SourceCodeManager {
 					$sourceCode .= $length;
 				}
 				fclose($fp);
-				//echo $sourceCode;
 				if( $this-> _createFolder($folderName) ){
 					$this-> _createFile($fileDir, $sourceCode);
 				}
@@ -61,19 +60,14 @@ class SourceCodeManager {
 	}
 	public function generate(){
 		$folderResult= opendir(self::$REPO);
-		//echo $folderResult; //"Resource id #2"
 		while( ($folder= readdir($folderResult)) !== false ){
-			//echo $folder."<br>";
 			if( $folder != "." && $folder != ".." && $folder != "head" ){
 				$fileResult= opendir(self::$REPO ."\\". $folder);
 				while( ($file= readdir($fileResult)) !== false ){
-					//echo $file."<br>";
 					if( $file != "." && $file != ".." ){
-						//echo self::$REPO ."\\". $folder ."\\". $file ."<br>";
 						$exportXML= simplexml_load_file(self::$REPO ."\\". $folder ."\\". $file);
-						//echo gettype($exportXML-> item); //object
 						foreach($exportXML-> item as $object){
-							echo $object-> cacheUrl ."<br>";
+							//echo $object-> cacheUrl ."<br>";
 							$this-> fileGenerate($object-> cacheUrl);
 						}
 					}
@@ -82,7 +76,4 @@ class SourceCodeManager {
 		}
 	}
 }
-
-
-
 ?>

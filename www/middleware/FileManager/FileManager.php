@@ -34,7 +34,7 @@ class FileManager {
 					$code = ErrorMessages::getErrorCode( $type );
 					throw Exception( $msg, $code);
 				} else{
-					return true; //建立folder成功時，也要return ture;
+					return true; 
 				}
 			} else {
 				return true;
@@ -77,7 +77,7 @@ class FileManager {
 		$folderName = self :: $HEAD_PATH . "\\" . substr($this-> _keywordSha1, 0, 2);
 		$file_name = substr($this-> _keywordSha1, 2) . ".xml";
 		if($this-> _createFolder($folderName)) {
-			$this-> _keywordXML-> asXML( $folderName . "\\". $file_name ); //直接複寫 原本file content
+			$this-> _keywordXML-> asXML( $folderName . "\\". $file_name ); 
 		}	
 	}
 	
@@ -111,12 +111,4 @@ class FileManager {
 		$this-> _setHeadXML($this-> _searchInfoSha1);		
 	}
 }
-
-//$sha1Manage= new Sha1Manage();
-
-/*$data= '<?xml version="1.0"?><root><item>bb</item><item>cc</item><</root>';*/
-//$keyword= "IBM";
-//$sha1Manage-> dataSha1($data);
-//$sha1Manage-> keywordSha1($keyword, $data);
-
 ?>
