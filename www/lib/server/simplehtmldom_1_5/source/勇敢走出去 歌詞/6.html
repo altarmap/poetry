@@ -1,0 +1,1742 @@
+
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>勇敢走出去mp3试听下载,勇敢走出去歌词-搜狗音乐</title><!--pagetitle:勇敢走出去-->
+<meta http-equiv="Content-Type" content="text/html;charset=gb2312">
+<meta name="Description" content="搜狗音乐为您提供:勇敢走出去mp3试听下载,勇敢走出去歌词"/>
+<meta name="Keywords" content="勇敢走出去mp3试听,勇敢走出去下载,勇敢走出去歌词"/>
+<link href="/style/common.css?v=1" rel="stylesheet" type="text/css">
+<link href="/style/musicSo_4.0.css?v=1" rel="stylesheet" type="text/css">
+</head>
+<body onload="init()" id="outerbody"  >
+
+	
+
+	
+
+
+	
+
+
+
+	
+
+
+	
+
+
+	<!-- qc second query-->
+	
+	
+<script>
+	var enQuery = "%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5";
+	var hasresult = true;
+</script>
+
+
+
+
+<script>
+function navmusic(el, target, pval, wval) {
+	el.href="###";
+	var f = document.getElementById("navf"); f.action = target;
+	var q = document.getElementById("navq"); var iq = document.getElementById("queryinput"); q.value = iq.value;
+	var p = document.getElementById("navp"); p.value = pval;
+	var w = document.getElementById("navw"); w.value = wval;
+	var interv = document.getElementById("interv"); interv.value = decodeURIComponent(getinterv().replace("\r\n","\n"));
+	f.submit();
+	return false;
+}
+
+function navmusic2(l,txt,esc){
+	if(!txt) return;
+	if(l.tagName.toUpperCase()!="A") return; 
+	var idx = l.href.indexOf(txt); 
+	if(idx<0) return; 
+	idx = idx + txt.length; 
+	var ele = document.getElementById("searchForm"); 
+	if( !ele || !ele.query) return; 
+	var q = ele.query.value; 
+	if(q!=null){ 
+		if(esc){ 
+			q = escape(q); 
+		}
+	l.href=l.href.substr(0,idx) + q; 
+	}
+}
+
+function dde_dispatch2(num,you_check1){
+	var fm = document.getElementById("searchForm"+num);
+	var which = document.getElementsByTagName("input");
+	var you_check = 0;
+	for(i=0;i<which.length;i++){
+		if(which[i].name==("classfake")&&which[i].checked){
+		you_check=which[i].value;
+		break;
+		}
+	}
+	switch(you_check){
+		case "2":
+			if(fm.st.value=="")fm.st.value="heat";
+			break;
+		default:
+			fm.st.value="";
+	}
+	fm.action = {2:"/album.so",3:"/lyric.so",4:"/ring.so"}[you_check] || "/music.so";
+	if(fm.rd_music && !fm.rd_music.checked) fm.ac.value=""; 
+	filterForInitiativeSearch(fm);
+}
+function dde_dispatch(num){
+	var fm = document.getElementById("searchForm"+num);
+	var which = document.getElementsByTagName("input");
+	var you_check = 0;
+	for(i=0;i<which.length;i++){
+		if(which[i].name==("class"+num)&&which[i].checked){
+		you_check=which[i].value;
+		break;
+		}
+	}
+	switch(you_check){
+		case "2":
+			if(fm.st.value=="")fm.st.value="heat";
+			break;
+		default:
+			fm.st.value="";
+	}
+	fm.action = {2:"/album.so",3:"/lyric.so",4:"/ring.so"}[you_check] || "/music.so";
+	//alert(fm.name+"--"+fm.action);
+	if(fm.rd_music && !fm.rd_music.checked) fm.ac.value=""; 
+	// added by hanxu for stat. initiative search
+	filterForInitiativeSearch(fm);
+}
+
+// added by hanxu for stat. initiative search
+function filterForInitiativeSearch(fm)
+{
+	if(typeof(fm)=='undefined' || !fm){
+		return false;
+	}
+
+	// the pages such as geci.so ,gecisearch.so and ring.so do not need mark for initiative search
+	 var actionStr = fm.action;
+	 if(typeof(actionStr)=='undefined')
+         	return false;
+	if(actionStr.indexOf("geci.so")>=0 || actionStr.indexOf("gecisearch.so")>=0 || actionStr.indexOf("ring.so")>=0 || actionStr.indexOf("lyric.so")>=0)
+		return false;
+
+	// add _asf
+	var input = document.getElementById("_asf");
+	input.value = window.location.host;
+
+	// add _ast
+	nowDate = new Date();
+	utcTimeMills = nowDate.getTime();
+
+	var input = document.getElementById("_ast");
+	input.value = Math.round(utcTimeMills/1000);
+
+	// add w
+	var isHave = false;
+	// if the original parameters has the param "w" , so change the "w" parameter's value
+	for(var i=0;i<fm.childNodes.length;i++)
+	{
+		var paramName = fm.childNodes[i].name;
+		if( paramName=="w")
+		{
+			fm.childNodes[i].value = "02009900";
+			isHave = "true";
+		}
+	}
+
+	// the original parameters do not have the param "w" 
+	if(!isHave)
+	{
+		var input = document.createElement("INPUT");
+		input.name = "w";
+		input.value = "02009900";
+		input.type="hidden";
+		fm.appendChild(input);
+	}	
+	return(false);
+}
+function subinterv(url){
+if(typeof(url)=="undefined"||url==""){
+	return "";
+}
+var start=url.indexOf('interV=');
+var interv="";
+if(start>0){
+	var end=url.indexOf("&",start);
+	if(end>0){
+		interv=url.substring(start+7,end);
+	}else{
+		interv=url.substring(start+7,url.length);
+	}
+}
+return interv;
+}
+function getinterv(){
+var url=document.URL;
+var interv=subinterv(url);
+if(interv==""){
+	var searchnav=document.getElementById('searchnav');
+	if(typeof(searchnav)!="undefined"){
+		var a=searchnav.getElementsByTagName("a");
+		if(typeof(a)!="undefined"&&typeof(a[0])!="undefined"){
+			var url=a[0].href;
+			interv=subinterv(url);
+		}
+	}
+}
+return interv;
+}
+function dealinterv(obj){
+var interv=getinterv();
+if(interv!=""){
+	obj.href=obj.href+"&interV="+interv;
+}
+}
+
+
+function selectRadio2(type,value,num){
+	var f=document.getElementById("searchForm"+num);
+        if(type=="all"){
+                f.classid.value="1";
+		f.pf.value="";
+		f.st.value="";
+        }else if(type=="pf"){
+                f.classid.value="1";
+                f.pf.value=value;
+                f.st.value="";
+        }else if(type=="album"){
+                f.classid.value="2";
+                f.pf.value="";
+                f.st.value="time";
+	}else{
+                f.classid.value="3";
+                f.pf.value="";
+                f.st.value="";
+	}
+	var interv=getinterv();
+	if(interv!=""){
+		f.interV.value=interv;
+	}
+	dde_dispatch2(num,f.classid.value);
+	document.getElementById("searchForm"+num).submit();
+
+}
+
+function selectRadio(type,value,num){
+	var f=document.getElementById("searchForm"+num);
+        if(type=="all"){
+                f.pf.value="";
+                f.st.value="";
+        }else if(type=="pf"){
+                f.pf.value=value;
+                f.st.value="";
+        }else if(type=="album"){
+                f.pf.value="";
+                f.st.value="time";
+	}else{
+                f.pf.value="";
+                f.st.value="";
+	}
+	dde_dispatch(num);
+	document.getElementById("searchForm"+num).submit();
+
+}
+</script>
+
+
+<!--topbar-->
+<div id="topbar">
+	<div class="toplink"><a target="_blank" href="http://www.sogou.com/feedback/?product=%CB%D1%B9%B7%D2%F4%C0%D6%CB%D1%CB%F7" uigs="result_feedback">意见反馈</a></div>
+
+	<ul class="topnav">
+		<li><a href="http://news.sogou.com/news?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" onclick="navmusic(this,'http://news.sogou.com/news','','');return false;">新闻</a></li><li><a href="http://www.sogou.com/web?p=41240100&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" onclick="navmusic(this,'http://www.sogou.com/web','41240100','');return false;">网页</a></li><li>音乐</li><li><a href="http://pic.sogou.com/pics?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" onclick="navmusic(this,'http://pic.sogou.com/pics','','');return false;">图片</a></li><li><a href="http://v.sogou.com/v?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" onclick="navmusic(this,'http://v.sogou.com/v','','');return false;">视频</a></li><li><a href="http://map.sogou.com/#lq=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" onclick="navmusic2(this,'#lq=','true');">地图</a></li><li><a href="http://zhishi.sogou.com/zhishi?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" onclick="navmusic(this,'http://zhishi.sogou.com/zhishi','','');return false;">知识</a></li><li><a href="http://gouwu.sogou.com/shop?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" onclick="navmusic(this,'http://gouwu.sogou.com/shop','','');return false;">购物</a></li><li><a href="http://www.sogou.com/docs/more.htm" target="_blank" uigs="result_nav_more">更多&gt;&gt;</a></li>
+	</ul>
+
+	<form type="hidden" name="navf" id="navf" method="get" action="">
+	<input type="hidden" id="navq" name="query">
+	<input type="hidden" id="navp" name="p">
+	<input type="hidden" id="navw" name="w">
+	<input type="hidden" id="interv" name="interV">
+	</form>
+</div>
+
+<!--header-->
+<div id="header">
+<a href="http://mp3.sogou.com/" uigs="result_logo" class="logo logo_m" title="回到搜狗音乐首页"></a>
+
+<form id="searchForm" name="searchForm" action="music.so" method="get" onsubmit="dde_dispatch2('');return true;">
+<div class="querybox">
+	<div class="qborder"><input id="queryinput" name="query" class="query" size="35" maxlength="100" value="勇敢走出去" autocomplete="off" type="text"></div>
+	<input id="stb" value="搜狗搜索" type="submit" class="sbtn1" onmousedown="this.className='btnactive'" onmouseup="this.className='sbtn1'" onmouseout="this.className='sbtn1'">
+
+	<input type=hidden name="class" id="classid" value=1 />
+	<input type=hidden name="st" id="st" value="">
+	<input type=hidden name="ac" id="ac" value="1">
+	<input type=hidden name="pf" id="pf" value="">
+	<input type=hidden name="_asf" id="_asf">
+	<input type=hidden name="_ast" id="_ast">
+	<input type=hidden name="p" id="p">
+	<input type=hidden name="w" id="w">
+	<input type=hidden name="interV" id="inter">
+
+</div>
+</form>
+</div>
+
+<!--freact-->
+<div class="searchnavbox">
+<ul class="searchnav" id="searchnav">
+
+	<li><a uigs="inttab_61_0" href="http://www.sogou.com/web?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&interV=kKIOkrELjbkRmLkElbkTkKIMkrELjboImLkEk74TkKIJmbELjb8TkKIKmrELjbkImLkElbs%3D_-585152051&sourceid=inttab_music">网页</a></li>
+
+	<li><a uigs="inttab_39_1" href="http://www.sogou.com/web?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&interation=196647&chuidq=39&interV=kKIOkrELjbkRmLkElbkTkKIMkrELjboImLkEk74TkKIJmbELjb8TkKIKmrELjbkImLkElbs%3D_-585152051&sourceid=inttab_music">博客</a></li>
+
+	<li><a uigs="inttab_43_2" href="http://www.sogou.com/web?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&interation=196651&chuidq=43&interV=kKIOkrELjbkRmLkElbkTkKIMkrELjboImLkEk74TkKIJmbELjb8TkKIKmrELjbkImLkElbs%3D_-585152051&sourceid=inttab_music">百科</a></li>
+
+	<li><a uigs="inttab_41_3" href="http://news.sogou.com/news?p=40230205&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&interV=kKIOkrELjbkRmLkElbkTkKIMkrELjboImLkEk74TkKIJmbELjb8TkKIKmrELjbkImLkElbs%3D_-585152051&sourceid=inttab_music">新闻</a></li>
+
+	<li><a uigs="inttab_40_4" href="http://www.sogou.com/web?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&interation=196648&chuidq=40&interV=kKIOkrELjbkRmLkElbkTkKIMkrELjboImLkEk74TkKIJmbELjb8TkKIKmrELjbkImLkElbs%3D_-585152051&sourceid=inttab_music">论坛</a></li>
+
+	<li class="cur"><span>音乐</span></li>
+	
+<script language='javascript'>var isOut = true;</script>
+	<li class="moresearch" id="moresearch"><a id="navibtn" href="javascript:void(null);" >更多</a>
+	<div class="moremenu" id="moremenu" style="display:none;">
+
+	<a uigs="inttab_28_6" href="http://zhishi.sogou.com/zhishi?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&interV=kKIOkrELjbkRmLkElbkTkKIMkrELjboImLkEk74TkKIJmbELjb8TkKIKmrELjbkImLkElbs%3D_-585152051&sourceid=inttab_music">知识</a> 
+
+	<a uigs="inttab_18_7" href="http://www.sogou.com/web?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&interation=196626&chuidq=18&interV=kKIOkrELjbkRmLkElbkTkKIMkrELjboImLkEk74TkKIJmbELjb8TkKIKmrELjbkImLkElbs%3D_-585152051&sourceid=inttab_music">快播</a> 
+
+	<a uigs="inttab_9_8" href="http://www.sogou.com/web?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&interation=196617&chuidq=9&interV=kKIOkrELjbkRmLkElbkTkKIMkrELjboImLkEk74TkKIJmbELjb8TkKIKmrELjbkImLkElbs%3D_-585152051&sourceid=inttab_music">文档</a> 
+
+	<a uigs="inttab_29_9" href="http://quan.sogou.com/quan?qt=zhaopin&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&interV=kKIOkrELjbkRmLkElbkTkKIMkrELjboImLkEk74TkKIJmbELjb8TkKIKmrELjbkImLkElbs%3D_-585152051&sourceid=inttab_music">招聘</a> 
+
+	<a uigs="inttab_30_10" href="http://gouwu.sogou.com/shop?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&interV=kKIOkrELjbkRmLkElbkTkKIMkrELjboImLkEk74TkKIJmbELjb8TkKIKmrELjbkImLkElbs%3D_-585152051&sourceid=inttab_music">购物</a> 
+
+	<a uigs="inttab_45_11" href="http://quan.sogou.com/quan?qt=fangchan.esf&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&interV=kKIOkrELjbkRmLkElbkTkKIMkrELjboImLkEk74TkKIJmbELjb8TkKIKmrELjbkImLkElbs%3D_-585152051&sourceid=inttab_music">二手房</a> 
+
+	<a target="_blank" uigs="inttab_62_12" href="http://www.sogou.com/docs/more.htm"  class="pro">产品大全</a>
+
+</div>
+<script language='javascript'>
+
+//window.onload = function(){
+var moremenu = document.getElementById('moremenu');
+var moresearch = document.getElementById('moresearch');
+var btn= document.getElementById('navibtn');
+var timer=null;
+
+if(btn&&moresearch&&moremenu){
+btn.onclick = function(){
+	if (moremenu.style.display == "block"){
+		btn.className = "";
+		moremenu.style.display = "none";
+		if(typeof(uigsPB)=="function")
+		uigsPB("intclose");
+	}else{
+		moremenu.style.display = "block";
+		btn.className = "on";
+		if(typeof(uigsPB)=="function")
+		uigsPB("intmore");
+	}
+	return false;
+}
+
+moresearch.onmouseover=function(){
+    clearTimeout(timer);
+}
+
+moresearch.onmouseout=function(){
+clearTimeout(timer);
+timer = setTimeout(function(){
+	if (moremenu.style.display == "block"){
+		moremenu.style.display = "none";
+		btn.className = "";
+		uigsPB("intclose");
+	}
+}, 100);
+}
+}
+
+//}
+</script>
+</li>
+
+</ul>
+<div class="rststat">找到约 114 <!--resultbarnum:114--> 条结果</div><!--resultbartime:0.018-->
+</div>
+
+<div id="wrapper">
+	<span class="switcher" onclick="switchcol();"></span>
+	<div id="sidebar">
+
+<!--radio check-->
+<ul class="sidenav1">
+	
+		<li><strong>全部格式</strong></h2>
+	
+	
+		<li><a href="/music.so?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&w=02020105&pf=mp3" onclick="dealinterv(this)">mp3</a></li>
+	
+	
+		<li><a href="/music.so?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&w=02020106&pf=wma" onclick="dealinterv(this)">wma</a></li>
+	
+	
+		<li><a href="/music.so?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&w=02020107&pf=rm" onclick="dealinterv(this)">rm</a></li>
+	
+</ul>
+
+<!--ilike-->
+<ul id="ilike" class="sidenav1" style="display:none">
+</ul>
+
+</div>
+
+	<div class="right"> 
+	<!--相关专辑-->
+	<div style="display:none" id="ialbum" class="box1"></div>
+	<div id="lunbo_sogouFrag_1" class="adbanner125"></div>
+	<div id="lunbo_sogouFrag_2" class="adbanner125"></div>
+	<div id="lunbo_sogouFrag_3" class="adbanner125"></div>
+</div>
+
+
+	<div id="main">
+		<div class="resultstats" id="crumbnav">
+	<input id="rd_music" name="classfake" value=1 type="radio" onclick='selectRadio2("all","","")' checked uigs="result_radio_all">
+	<label for="rd_music">全部音乐</label>
+	<input id="rd_musicMp3" name="classfake" value=1 type="radio" onclick='selectRadio2("pf","mp3","")'  uigs="result_radio_mp3">
+	<label for="rd_musicMp3">mp3</label>
+	<input id="rd_musicWma" name="classfake" value=1 type="radio" onclick='selectRadio2("pf","wma","")'  uigs="result_radio_wma">
+	<label for="rd_musicWma">wma</label>
+	<input id="rd_musicRm" name="classfake" value=1 type="radio" onclick='selectRadio2("pf","rm","")'  uigs="result_radio_rm">
+	<label for="rd_musicRm">rm</label>
+	<input id="rd_album" name="classfake" type="radio" value=2  onclick='selectRadio2("album","","")'  uigs="result_radio_album">
+	<label for="rd_album">专辑</label>
+	<input id="rd_geci" name="classfake" type="radio" value="3" onclick='selectRadio2("","","")'  uigs="result_radio_lyric">
+	<label for="rd_geci">歌词</label>
+</div>
+<div id="mqc" style="display:none" class="mqc"></div>
+
+		
+			<!--同好-->
+<script>
+var rid = "02020900";
+if (typeof(newPid) != "undefined") {
+    rid = newPid;
+}
+//页面onload结束之后调用，在init中
+function getilike() {
+	var title = "勇敢走出去";
+	if( title=="" ) {
+	    if (typeof(clearRecommendRighter) != "undefined") {
+		clearRecommendRighter();
+	    }
+		return;
+	}
+
+	var url = "/coo/common/ajax_ilike.jsp";
+	var params = "title="+escape(title);
+	params += "&num=40";
+	params += "&type=all";
+	params += "&random="+random();
+	url += "?" + params;
+	var ajax = new Ajax(
+		{
+		    url: url,
+		    method: 'get',
+		    onLoading: loading(),
+		    onComplete: showilike
+		}
+	);
+}
+
+function loading() {
+    document.getElementById('ilike').innerHTML = "Loading...";
+}
+
+function showilike( req ) {
+	var recObj = eval(req.responseText);
+
+	var m = "";
+	var query = "勇敢走出去";
+	var artist = "";
+
+	recObj= filter(recObj,"###",10);
+		
+	if( recObj==null || recObj.length==0 ) {
+	    document.getElementById('ilike').innerHTML = "";
+	} else {
+		uigsPB('music_ilike_num_'+recObj.length);
+		for( var i=0; i<recObj.length; i++) {
+			var meta=getdisplaydata(recObj[i]);
+			if(meta.length!=2||(jslength(meta[0])+jslength(meta[1]))>18) continue;
+			m = m + "<li><a uigs='music_ilike_"+(i+1)+"' title='"+formatStr_m(meta[0]+" "+meta[1])+"' href=http://mp3.sogou.com/music.so?query="+escape(geturldata(recObj[i]))+"&w="+rid+"&sourcetype=ilike_"+(i+1);
+			m += " target=_blank>";
+			m += formatStr_m(meta[0]);
+			m += "<span class='hui9'>&nbsp;"+formatStr_m(meta[1])+"</span>";
+			m += "</a></li>";
+		}
+		if(m=="") return;
+		m='<li><strong>猜您可能喜欢</strong></li>'+m;
+		var ilikediv = document.getElementById('ilike');
+		ilikediv.innerHTML = m;
+		showRecommendRighter();
+		ilikediv.style.display="";
+	}
+
+}
+function jslength(str){
+	if(str==null||str=="") return 0;
+	return str.replace(/[^\x00-\xff]/gi,'xx').length;
+}
+function sub_str(str,len,place)
+{
+  if(jslength(str)<=len) return str;
+ 
+  if(place=='left')
+  {
+     var temp_len=len;
+     str=str.substr(0,len);
+     while(jslength(str)>len)
+     {
+        str=str.substr(0,--temp_len);
+     }
+  }
+  if(place=='right')
+  {
+     var temp_startn=0;
+     str=str.substr(str.length-len,len);
+     while(jslength(str)>len)
+     {    
+        str=str.substr(1,len);
+     }    
+  }
+  return str+"..";
+}
+
+function clearRecommendRighter() {
+	document.getElementById('ilike').style.display = "none";
+}
+
+function showRecommendRighter() {
+        document.getElementById('ilike').style.display = "";
+}
+
+function formatStr(s, AFindText, ARepText) {
+        raRegExp = new RegExp(AFindText,"g");
+        return s.replace(raRegExp,ARepText);
+}
+//array中还有separator的才会输出：
+function filter(array,separator,num){
+        var ret =new Array();
+        var j=0;
+        if(!array||!array.length||typeof(separator)!="string")
+                return "";
+        for(var i=0;i<array.length;i++){
+                if(array[i].indexOf(separator)!=-1){
+                        ret[j]=array[i];
+                        if(++j>=num) break;
+                }
+        }
+        return ret;
+}
+//get url data 
+function geturldata(data){
+	if(!data||typeof(data)!="string"||data.indexOf("###")==-1){
+		return "";
+	}
+	var start=data.indexOf("###");
+	var artist = data.substring(0,start);
+	var title = data.substring(start+3);
+	return title+" "+artist;
+}
+//get display data
+function getdisplaydata(data){
+	 if(!data||typeof(data)!="string"||data.indexOf("###")==-1){
+                return new Array();
+        }
+        var start=data.indexOf("###");
+        var artist = data.substring(0,start);
+        var title = data.substring(start+3);
+	return new Array(title,artist);
+	
+}
+//处理特殊字符space/</>
+function formatStr_m(str){
+	str=formatStr(str," ","&nbsp;");
+	str=formatStr(str,"<","&lt;");
+	str=formatStr(str,">","&gt;");
+	return str;
+}
+function random(){
+	return Math.random() * 1999;
+}
+</script>
+<!--相关专辑-->
+<script>
+function getrelatedalbum(){
+	var querya="勇敢走出去";
+	if(""==querya) return;
+	var vmv = new Ajaj(
+                "http://mp3.sogou.com/coo/common/ajaj_getAlbum.jsp",
+                {
+                        "parameters":{"query":escape(querya)},
+                        "onComplete":function(json) {
+                        	if(!json||""==json){
+					return;
+                        	}
+				showalbum(json);
+                        }
+                }
+	);
+}
+function markred(text){
+	if(!text||""==text) return "";
+	text = text.replace(/[\ue40a]/gi,'<font color="red">');
+	text = text.replace(/[\ue40b]/gi,'</font>');
+	return text
+}
+function filterc(text){
+	if(!text||""==text) return "";
+	text = text.replace(/[\ue40a\ue40b]/gi,'');
+	return text;
+}
+function showalbum(json){
+	if(!json||""==json){
+		return;
+	}
+	var query=json.query;
+	if(!json.albumlist||json.albumlist.length==0){
+		return;
+	}
+	var divalbum = document.getElementById('ialbum');
+	var albumlist = json.albumlist;
+	var moreurl = "http://mp3.sogou.com/album.so?w=02021700&st=time&query="+escape(query);
+	var ihtml = '<h2 class="title1"><span><a href="'+moreurl+'" target="_blank" uigs="music_relavent_album_more">更多</a></span>相关专辑</h2><ul class="related">'; 
+	for(var i=0;i<albumlist.length;i++){
+		var ele = albumlist[i];
+		var album = ele.album;
+		var ralbum =ele.ralbum;
+		var singer = ele.singer;
+		var rsinger = ele.rsinger;
+		var urlsinger = ele.urlsinger;
+		var urlalbum = ele.urlalbum;
+		var photo = ele.photo;
+		var publishtime = ele.publishtime;
+		ihtml = ihtml + '<li><div><a href="' + urlalbum + '?w=02021700" target="_blank"><img src="'+photo+'" width="88" height="88" class="pic1" onerror="this.src=\'http://mp3.sogou.com/images/noalbum.gif\';this.onerror=null;"></a></div>';
+		ihtml = ihtml + '<div><a target="_blank" href="'+urlalbum+'?w=02020403" title="'+formatStr_m(album)+'">'+markred(ralbum)+'</a><br>';
+		ihtml = ihtml + '<a target="_blank" style="font-size:12px;" href="'+urlsinger+'?w=02020302" title="'+formatStr_m(singer)+'">'+markred(rsinger)+'</a><br>'+publishtime+'</div>';
+		ihtml = ihtml + '</li>'
+	}
+	ihtml = ihtml + '</ul>';
+	divalbum.innerHTML = ihtml;	
+	divalbum.style.display = "";
+}
+
+</script>
+
+<!--歌曲列表-->
+
+
+
+<!--面包屑-->
+<table id="songlist">
+<tbody><tr>
+	<th width="55">&nbsp;</th>
+	<th width="25%" class="songname">歌名</th>
+	<th width="15%" class="singger">歌手</th>
+	<th width="15%" class="singger">专辑</th>
+	<th>试听</th>
+	<th>添加</th>
+	<th>链接</th>
+	<th>歌词</th>
+	<th>大小</th>
+	<th>格式</th>
+	<th>连通速度</th>
+</tr>
+
+<!--m--><tr id="musicmc_0">
+	<td  class="cbbox"><label><input id="checkboxmc_0" type="checkbox" name="batchlistenm" section="bl" t="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" s="%D4%DE%C3%C0%D6%AE%C8%AA" gid="1927135f973405bf" cid="1DFE548D165470BE" lyricid="0000000000000000" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_1" />1</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=1DFE548D165470BE&gid=1927135f973405bf&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_0',0);uigsPB('consume=music_song&music_song=1&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" entitle="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" title="勇敢走出去" action="listen"><font style="color:red;text-decoration:underline;">勇敢走出去</font></a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D4%DE%C3%C0%D6%AE%C8%AA" href="http://music.sogou.com/singer/15/detailSinger_%D4%DE%C3%C0%D6%AE%C8%AA.html" entitle="%D4%DE%C3%C0%D6%AE%C8%AA" title="赞美之泉" target=_blank uigs="consume=music_singer&music_singer=1&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5">赞美之泉</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/15/detailAlbum_%D4%DE%C3%C0%D6%AE%C8%AA!!%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4.html" entitle="%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4" title="最珍贵的角落" target=_blank uigs="consume=music_album&music_album=1&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" >最珍贵的角落</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=1DFE548D165470BE&gid=1927135f973405bf&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_0',0);uigsPB('consume=music_listen&music_listen=1&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=1DFE548D165470BE&gid=1927135f973405bf&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_0',1);uigsPB('consume=music_listen_append&music_listen=1&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');append('songtip_0');return(false);">添加</a></span><span class="addtip" id="songtip_0" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=1DFE548D165470BE&globalId=1927135f973405bf&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&tgid=69abd6cc5b68d119&pf=mp3&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&size=4126329&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=1&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	</td>
+	<td nowrap>3.94M<!--size:3.94M--></td>
+	<td>mp3</td>
+	<td><div class="spd"><span class="spdbar3"></span></div></td>
+</tr><!--n-->
+
+<!--m--><tr id="musicmc_1">
+	<td  class="cbbox"><label><input id="checkboxmc_1" type="checkbox" name="batchlistenm" section="bl" t="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" s="%D4%DE%C3%C0%D6%AE%C8%AA" gid="14e67d9d3ef0fb42" cid="1DC2E78391FB1E91" lyricid="0000000000000000" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_2" />2</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=1DC2E78391FB1E91&gid=14e67d9d3ef0fb42&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_1',0);uigsPB('consume=music_song&music_song=2&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" entitle="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" title="勇敢走出去" action="listen"><font style="color:red;text-decoration:underline;">勇敢走出去</font></a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D4%DE%C3%C0%D6%AE%C8%AA" href="http://music.sogou.com/singer/15/detailSinger_%D4%DE%C3%C0%D6%AE%C8%AA.html" entitle="%D4%DE%C3%C0%D6%AE%C8%AA" title="赞美之泉" target=_blank uigs="consume=music_singer&music_singer=2&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5">赞美之泉</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/15/detailAlbum_%D4%DE%C3%C0%D6%AE%C8%AA!!%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4.html" entitle="%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4" title="最珍贵的角落" target=_blank uigs="consume=music_album&music_album=2&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" >最珍贵的角落</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=1DC2E78391FB1E91&gid=14e67d9d3ef0fb42&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_1',0);uigsPB('consume=music_listen&music_listen=2&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=1DC2E78391FB1E91&gid=14e67d9d3ef0fb42&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_1',1);uigsPB('consume=music_listen_append&music_listen=2&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');append('songtip_1');return(false);">添加</a></span><span class="addtip" id="songtip_1" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=1DC2E78391FB1E91&globalId=14e67d9d3ef0fb42&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&tgid=69abd6cc5b68d119&pf=mp3&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&size=6178760&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=2&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	</td>
+	<td nowrap>5.89M<!--size:5.89M--></td>
+	<td>mp3</td>
+	<td><div class="spd"><span class="spdbar3"></span></div></td>
+</tr><!--n-->
+
+<!--m--><tr id="musicmc_2">
+	<td  class="cbbox"><label><input id="checkboxmc_2" type="checkbox" name="batchlistenm" section="bl" t="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" s="%D4%DE%C3%C0%D6%AE%C8%AA" gid="18b1a6942f093608" cid="3FD4AEDCC7F4EC59" lyricid="0000000000000000" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_3" />3</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=18b1a6942f093608&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_2',0);uigsPB('consume=music_song&music_song=3&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" entitle="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" title="勇敢走出去" action="listen"><font style="color:red;text-decoration:underline;">勇敢走出去</font></a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D4%DE%C3%C0%D6%AE%C8%AA" href="http://music.sogou.com/singer/15/detailSinger_%D4%DE%C3%C0%D6%AE%C8%AA.html" entitle="%D4%DE%C3%C0%D6%AE%C8%AA" title="赞美之泉" target=_blank uigs="consume=music_singer&music_singer=3&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5">赞美之泉</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/15/detailAlbum_%D4%DE%C3%C0%D6%AE%C8%AA!!%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4.html" entitle="%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4" title="最珍贵的角落" target=_blank uigs="consume=music_album&music_album=3&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" >最珍贵的角落</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=18b1a6942f093608&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_2',0);uigsPB('consume=music_listen&music_listen=3&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=3FD4AEDCC7F4EC59&gid=18b1a6942f093608&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_2',1);uigsPB('consume=music_listen_append&music_listen=3&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');append('songtip_2');return(false);">添加</a></span><span class="addtip" id="songtip_2" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=3FD4AEDCC7F4EC59&globalId=18b1a6942f093608&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&tgid=69abd6cc5b68d119&pf=wma&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&size=1578201&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=3&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	</td>
+	<td nowrap>1.51M<!--size:1.51M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+<!--m--><tr id="musicmc_3">
+	<td  class="cbbox"><label><input id="checkboxmc_3" type="checkbox" name="batchlistenm" section="bl" t="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" s="%D4%DE%C3%C0%D6%AE%C8%AA" gid="133ed3f3e5a9fce6" cid="3FD4AEDCC7F4EC59" lyricid="0000000000000000" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_4" />4</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=133ed3f3e5a9fce6&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_3',0);uigsPB('consume=music_song&music_song=4&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" entitle="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" title="勇敢走出去" action="listen"><font style="color:red;text-decoration:underline;">勇敢走出去</font></a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D4%DE%C3%C0%D6%AE%C8%AA" href="http://music.sogou.com/singer/15/detailSinger_%D4%DE%C3%C0%D6%AE%C8%AA.html" entitle="%D4%DE%C3%C0%D6%AE%C8%AA" title="赞美之泉" target=_blank uigs="consume=music_singer&music_singer=4&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5">赞美之泉</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/15/detailAlbum_%D4%DE%C3%C0%D6%AE%C8%AA!!%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4.html" entitle="%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4" title="最珍贵的角落" target=_blank uigs="consume=music_album&music_album=4&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" >最珍贵的角落</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=133ed3f3e5a9fce6&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_3',0);uigsPB('consume=music_listen&music_listen=4&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=3FD4AEDCC7F4EC59&gid=133ed3f3e5a9fce6&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_3',1);uigsPB('consume=music_listen_append&music_listen=4&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');append('songtip_3');return(false);">添加</a></span><span class="addtip" id="songtip_3" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=3FD4AEDCC7F4EC59&globalId=133ed3f3e5a9fce6&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&tgid=69abd6cc5b68d119&pf=wma&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&size=1578213&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=4&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	</td>
+	<td nowrap>1.51M<!--size:1.51M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+<!--m--><tr id="musicmc_4">
+	<td  class="cbbox"><label><input id="checkboxmc_4" type="checkbox" name="batchlistenm" section="bl" t="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" s="%D4%DE%C3%C0%D6%AE%C8%AA" gid="1a37975007320a82" cid="3FD4AEDCC7F4EC59" lyricid="0000000000000000" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_5" />5</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=1a37975007320a82&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_4',0);uigsPB('consume=music_song&music_song=5&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" entitle="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" title="勇敢走出去" action="listen"><font style="color:red;text-decoration:underline;">勇敢走出去</font></a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D4%DE%C3%C0%D6%AE%C8%AA" href="http://music.sogou.com/singer/15/detailSinger_%D4%DE%C3%C0%D6%AE%C8%AA.html" entitle="%D4%DE%C3%C0%D6%AE%C8%AA" title="赞美之泉" target=_blank uigs="consume=music_singer&music_singer=5&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5">赞美之泉</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/15/detailAlbum_%D4%DE%C3%C0%D6%AE%C8%AA!!%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4.html" entitle="%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4" title="最珍贵的角落" target=_blank uigs="consume=music_album&music_album=5&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" >最珍贵的角落</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=1a37975007320a82&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_4',0);uigsPB('consume=music_listen&music_listen=5&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=3FD4AEDCC7F4EC59&gid=1a37975007320a82&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_4',1);uigsPB('consume=music_listen_append&music_listen=5&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');append('songtip_4');return(false);">添加</a></span><span class="addtip" id="songtip_4" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=3FD4AEDCC7F4EC59&globalId=1a37975007320a82&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&tgid=69abd6cc5b68d119&pf=wma&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&size=1574111&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=5&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	</td>
+	<td nowrap>1.50M<!--size:1.50M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+<!--m--><tr id="musicmc_5">
+	<td  class="cbbox"><label><input id="checkboxmc_5" type="checkbox" name="batchlistenm" section="bl" t="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" s="%D4%DE%C3%C0%D6%AE%C8%AA" gid="1bb17088ecacd7b0" cid="3FD4AEDCC7F4EC59" lyricid="0000000000000000" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_6" />6</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=1bb17088ecacd7b0&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_5',0);uigsPB('consume=music_song&music_song=6&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" entitle="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" title="勇敢走出去" action="listen"><font style="color:red;text-decoration:underline;">勇敢走出去</font></a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D4%DE%C3%C0%D6%AE%C8%AA" href="http://music.sogou.com/singer/15/detailSinger_%D4%DE%C3%C0%D6%AE%C8%AA.html" entitle="%D4%DE%C3%C0%D6%AE%C8%AA" title="赞美之泉" target=_blank uigs="consume=music_singer&music_singer=6&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5">赞美之泉</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/15/detailAlbum_%D4%DE%C3%C0%D6%AE%C8%AA!!%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4.html" entitle="%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4" title="最珍贵的角落" target=_blank uigs="consume=music_album&music_album=6&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" >最珍贵的角落</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=1bb17088ecacd7b0&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_5',0);uigsPB('consume=music_listen&music_listen=6&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=3FD4AEDCC7F4EC59&gid=1bb17088ecacd7b0&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_5',1);uigsPB('consume=music_listen_append&music_listen=6&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');append('songtip_5');return(false);">添加</a></span><span class="addtip" id="songtip_5" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=3FD4AEDCC7F4EC59&globalId=1bb17088ecacd7b0&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&tgid=69abd6cc5b68d119&pf=wma&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&size=1578201&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=6&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	</td>
+	<td nowrap>1.51M<!--size:1.51M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+<!--m--><tr id="musicmc_6">
+	<td  class="cbbox"><label><input id="checkboxmc_6" type="checkbox" name="batchlistenm" section="bl" t="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" s="%D4%DE%C3%C0%D6%AE%C8%AA" gid="186734845f74a90b" cid="3FD4AEDCC7F4EC59" lyricid="0000000000000000" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_7" />7</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=186734845f74a90b&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_6',0);uigsPB('consume=music_song&music_song=7&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" entitle="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" title="勇敢走出去" action="listen"><font style="color:red;text-decoration:underline;">勇敢走出去</font></a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D4%DE%C3%C0%D6%AE%C8%AA" href="http://music.sogou.com/singer/15/detailSinger_%D4%DE%C3%C0%D6%AE%C8%AA.html" entitle="%D4%DE%C3%C0%D6%AE%C8%AA" title="赞美之泉" target=_blank uigs="consume=music_singer&music_singer=7&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5">赞美之泉</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/15/detailAlbum_%D4%DE%C3%C0%D6%AE%C8%AA!!%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4.html" entitle="%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4" title="最珍贵的角落" target=_blank uigs="consume=music_album&music_album=7&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" >最珍贵的角落</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=186734845f74a90b&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_6',0);uigsPB('consume=music_listen&music_listen=7&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=3FD4AEDCC7F4EC59&gid=186734845f74a90b&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_6',1);uigsPB('consume=music_listen_append&music_listen=7&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');append('songtip_6');return(false);">添加</a></span><span class="addtip" id="songtip_6" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=3FD4AEDCC7F4EC59&globalId=186734845f74a90b&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&tgid=69abd6cc5b68d119&pf=wma&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&size=1578201&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=7&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	</td>
+	<td nowrap>1.51M<!--size:1.51M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+<!--m--><tr id="musicmc_7">
+	<td  class="cbbox"><label><input id="checkboxmc_7" type="checkbox" name="batchlistenm" section="bl" t="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" s="%D4%DE%C3%C0%D6%AE%C8%AA" gid="1dda49c5dbbd6f97" cid="386812BD761B7A3C" lyricid="0000000000000000" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_8" />8</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=386812BD761B7A3C&gid=1dda49c5dbbd6f97&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_7',0);uigsPB('consume=music_song&music_song=8&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" entitle="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" title="勇敢走出去" action="listen"><font style="color:red;text-decoration:underline;">勇敢走出去</font></a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D4%DE%C3%C0%D6%AE%C8%AA" href="http://music.sogou.com/singer/15/detailSinger_%D4%DE%C3%C0%D6%AE%C8%AA.html" entitle="%D4%DE%C3%C0%D6%AE%C8%AA" title="赞美之泉" target=_blank uigs="consume=music_singer&music_singer=8&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5">赞美之泉</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/15/detailAlbum_%D4%DE%C3%C0%D6%AE%C8%AA!!%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4.html" entitle="%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4" title="最珍贵的角落" target=_blank uigs="consume=music_album&music_album=8&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" >最珍贵的角落</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=386812BD761B7A3C&gid=1dda49c5dbbd6f97&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_7',0);uigsPB('consume=music_listen&music_listen=8&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=386812BD761B7A3C&gid=1dda49c5dbbd6f97&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_7',1);uigsPB('consume=music_listen_append&music_listen=8&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');append('songtip_7');return(false);">添加</a></span><span class="addtip" id="songtip_7" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=386812BD761B7A3C&globalId=1dda49c5dbbd6f97&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&tgid=69abd6cc5b68d119&pf=wma&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&size=3605955&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=8&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	</td>
+	<td nowrap>3.44M<!--size:3.44M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+<!--m--><tr id="musicmc_8">
+	<td  class="cbbox"><label><input id="checkboxmc_8" type="checkbox" name="batchlistenm" section="bl" t="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" s="%D4%DE%C3%C0%D6%AE%C8%AA" gid="10754920fec7d450" cid="3FD4AEDCC7F4EC59" lyricid="0000000000000000" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_9" />9</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=10754920fec7d450&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_8',0);uigsPB('consume=music_song&music_song=9&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" entitle="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" title="勇敢走出去" action="listen"><font style="color:red;text-decoration:underline;">勇敢走出去</font></a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D4%DE%C3%C0%D6%AE%C8%AA" href="http://music.sogou.com/singer/15/detailSinger_%D4%DE%C3%C0%D6%AE%C8%AA.html" entitle="%D4%DE%C3%C0%D6%AE%C8%AA" title="赞美之泉" target=_blank uigs="consume=music_singer&music_singer=9&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5">赞美之泉</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/15/detailAlbum_%D4%DE%C3%C0%D6%AE%C8%AA!!%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4.html" entitle="%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4" title="最珍贵的角落" target=_blank uigs="consume=music_album&music_album=9&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" >最珍贵的角落</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=10754920fec7d450&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_8',0);uigsPB('consume=music_listen&music_listen=9&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=3FD4AEDCC7F4EC59&gid=10754920fec7d450&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_8',1);uigsPB('consume=music_listen_append&music_listen=9&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');append('songtip_8');return(false);">添加</a></span><span class="addtip" id="songtip_8" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=3FD4AEDCC7F4EC59&globalId=10754920fec7d450&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&tgid=69abd6cc5b68d119&pf=wma&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&size=1578237&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=9&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	</td>
+	<td nowrap>1.51M<!--size:1.51M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar3"></span></div></td>
+</tr><!--n-->
+
+<!--m--><tr id="musicmc_9">
+	<td  class="cbbox"><label><input id="checkboxmc_9" type="checkbox" name="batchlistenm" section="bl" t="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" s="%D4%DE%C3%C0%D6%AE%C8%AA" gid="1ceddf00a64b2cef" cid="3F424AD82A23B16A" lyricid="0000000000000000" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_10" />10</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=3F424AD82A23B16A&gid=1ceddf00a64b2cef&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_9',0);uigsPB('consume=music_song&music_song=10&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" entitle="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" title="勇敢走出去" action="listen"><font style="color:red;text-decoration:underline;">勇敢走出去</font></a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D4%DE%C3%C0%D6%AE%C8%AA" href="http://music.sogou.com/singer/15/detailSinger_%D4%DE%C3%C0%D6%AE%C8%AA.html" entitle="%D4%DE%C3%C0%D6%AE%C8%AA" title="赞美之泉" target=_blank uigs="consume=music_singer&music_singer=10&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5">赞美之泉</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/15/detailAlbum_%D4%DE%C3%C0%D6%AE%C8%AA!!%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4.html" entitle="%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4" title="最珍贵的角落" target=_blank uigs="consume=music_album&music_album=10&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" >最珍贵的角落</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=3F424AD82A23B16A&gid=1ceddf00a64b2cef&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_9',0);uigsPB('consume=music_listen&music_listen=10&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=3F424AD82A23B16A&gid=1ceddf00a64b2cef&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_9',1);uigsPB('consume=music_listen_append&music_listen=10&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');append('songtip_9');return(false);">添加</a></span><span class="addtip" id="songtip_9" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=3F424AD82A23B16A&globalId=1ceddf00a64b2cef&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&tgid=69abd6cc5b68d119&pf=wma&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&size=4153044&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=10&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	</td>
+	<td nowrap>3.96M<!--size:3.96M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar3"></span></div></td>
+</tr><!--n-->
+
+<!--m--><tr id="musicmc_10">
+	<td  class="cbbox"><label><input id="checkboxmc_10" type="checkbox" name="batchlistenm" section="bl" t="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" s="%D4%DE%C3%C0%D6%AE%C8%AA" gid="1d29f993e4232b6e" cid="3FD4AEDCC7F4EC59" lyricid="0000000000000000" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_11" />11</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=1d29f993e4232b6e&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_10',0);uigsPB('consume=music_song&music_song=11&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" entitle="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" title="勇敢走出去" action="listen"><font style="color:red;text-decoration:underline;">勇敢走出去</font></a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D4%DE%C3%C0%D6%AE%C8%AA" href="http://music.sogou.com/singer/15/detailSinger_%D4%DE%C3%C0%D6%AE%C8%AA.html" entitle="%D4%DE%C3%C0%D6%AE%C8%AA" title="赞美之泉" target=_blank uigs="consume=music_singer&music_singer=11&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5">赞美之泉</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/15/detailAlbum_%D4%DE%C3%C0%D6%AE%C8%AA!!%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4.html" entitle="%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4" title="最珍贵的角落" target=_blank uigs="consume=music_album&music_album=11&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" >最珍贵的角落</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=1d29f993e4232b6e&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_10',0);uigsPB('consume=music_listen&music_listen=11&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=3FD4AEDCC7F4EC59&gid=1d29f993e4232b6e&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_10',1);uigsPB('consume=music_listen_append&music_listen=11&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');append('songtip_10');return(false);">添加</a></span><span class="addtip" id="songtip_10" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=3FD4AEDCC7F4EC59&globalId=1d29f993e4232b6e&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&tgid=69abd6cc5b68d119&pf=wma&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&size=1578237&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=11&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	</td>
+	<td nowrap>1.51M<!--size:1.51M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar3"></span></div></td>
+</tr><!--n-->
+
+<!--m--><tr id="musicmc_11">
+	<td  class="cbbox"><label><input id="checkboxmc_11" type="checkbox" name="batchlistenm" section="bl" t="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" s="%D4%DE%C3%C0%D6%AE%C8%AA" gid="11b80be579653c02" cid="3FD4AEDCC7F4EC59" lyricid="0000000000000000" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_12" />12</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=11b80be579653c02&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_11',0);uigsPB('consume=music_song&music_song=12&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" entitle="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" title="勇敢走出去" action="listen"><font style="color:red;text-decoration:underline;">勇敢走出去</font></a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D4%DE%C3%C0%D6%AE%C8%AA" href="http://music.sogou.com/singer/15/detailSinger_%D4%DE%C3%C0%D6%AE%C8%AA.html" entitle="%D4%DE%C3%C0%D6%AE%C8%AA" title="赞美之泉" target=_blank uigs="consume=music_singer&music_singer=12&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5">赞美之泉</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/15/detailAlbum_%D4%DE%C3%C0%D6%AE%C8%AA!!%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4.html" entitle="%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4" title="最珍贵的角落" target=_blank uigs="consume=music_album&music_album=12&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" >最珍贵的角落</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=11b80be579653c02&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_11',0);uigsPB('consume=music_listen&music_listen=12&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=3FD4AEDCC7F4EC59&gid=11b80be579653c02&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_11',1);uigsPB('consume=music_listen_append&music_listen=12&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');append('songtip_11');return(false);">添加</a></span><span class="addtip" id="songtip_11" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=3FD4AEDCC7F4EC59&globalId=11b80be579653c02&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&tgid=69abd6cc5b68d119&pf=wma&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&size=1578237&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=12&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	</td>
+	<td nowrap>1.51M<!--size:1.51M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar3"></span></div></td>
+</tr><!--n-->
+
+<!--m--><tr id="musicmc_12">
+	<td  class="cbbox"><label><input id="checkboxmc_12" type="checkbox" name="batchlistenm" section="bl" t="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" s="%D4%DE%C3%C0%D6%AE%C8%AA" gid="1e0488ee1239a33b" cid="3FD4AEDCC7F4EC59" lyricid="0000000000000000" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_13" />13</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=1e0488ee1239a33b&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_12',0);uigsPB('consume=music_song&music_song=13&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" entitle="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" title="勇敢走出去" action="listen"><font style="color:red;text-decoration:underline;">勇敢走出去</font></a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D4%DE%C3%C0%D6%AE%C8%AA" href="http://music.sogou.com/singer/15/detailSinger_%D4%DE%C3%C0%D6%AE%C8%AA.html" entitle="%D4%DE%C3%C0%D6%AE%C8%AA" title="赞美之泉" target=_blank uigs="consume=music_singer&music_singer=13&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5">赞美之泉</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/15/detailAlbum_%D4%DE%C3%C0%D6%AE%C8%AA!!%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4.html" entitle="%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4" title="最珍贵的角落" target=_blank uigs="consume=music_album&music_album=13&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" >最珍贵的角落</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=1e0488ee1239a33b&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_12',0);uigsPB('consume=music_listen&music_listen=13&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=3FD4AEDCC7F4EC59&gid=1e0488ee1239a33b&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_12',1);uigsPB('consume=music_listen_append&music_listen=13&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');append('songtip_12');return(false);">添加</a></span><span class="addtip" id="songtip_12" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=3FD4AEDCC7F4EC59&globalId=1e0488ee1239a33b&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&tgid=69abd6cc5b68d119&pf=wma&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&size=1578237&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=13&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	</td>
+	<td nowrap>1.51M<!--size:1.51M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar3"></span></div></td>
+</tr><!--n-->
+
+<!--m--><tr id="musicmc_13">
+	<td  class="cbbox"><label><input id="checkboxmc_13" type="checkbox" name="batchlistenm" section="bl" t="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" s="%D4%DE%C3%C0%D6%AE%C8%AA" gid="105673f92307927c" cid="3FD4AEDCC7F4EC59" lyricid="0000000000000000" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_14" />14</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=105673f92307927c&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_13',0);uigsPB('consume=music_song&music_song=14&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" entitle="%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" title="勇敢走出去" action="listen"><font style="color:red;text-decoration:underline;">勇敢走出去</font></a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D4%DE%C3%C0%D6%AE%C8%AA" href="http://music.sogou.com/singer/15/detailSinger_%D4%DE%C3%C0%D6%AE%C8%AA.html" entitle="%D4%DE%C3%C0%D6%AE%C8%AA" title="赞美之泉" target=_blank uigs="consume=music_singer&music_singer=14&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5">赞美之泉</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/15/detailAlbum_%D4%DE%C3%C0%D6%AE%C8%AA!!%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4.html" entitle="%D7%EE%D5%E4%B9%F3%B5%C4%BD%C7%C2%E4" title="最珍贵的角落" target=_blank uigs="consume=music_album&music_album=14&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5" >最珍贵的角落</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=3FD4AEDCC7F4EC59&gid=105673f92307927c&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_13',0);uigsPB('consume=music_listen&music_listen=14&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=3FD4AEDCC7F4EC59&gid=105673f92307927c&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&lid=0000000000000000&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_13',1);uigsPB('consume=music_listen_append&music_listen=14&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');append('songtip_13');return(false);">添加</a></span><span class="addtip" id="songtip_13" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=3FD4AEDCC7F4EC59&globalId=105673f92307927c&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&tgid=69abd6cc5b68d119&pf=wma&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&size=1578237&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=14&s=%D4%DE%C3%C0%D6%AE%C8%AA&t=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	</td>
+	<td nowrap>1.51M<!--size:1.51M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar3"></span></div></td>
+</tr><!--n-->
+
+<!--m--><tr id="musicmc_14">
+	<td  class="cbbox"><label><input id="checkboxmc_14" type="checkbox" name="batchlistenm" section="bl" t="%D4%D9%BC%FB%B9%FD%C8%A5" s="%BB%C6%CF%E6%E2%F9" gid="1d36f8ec499a2a34" cid="33924F0B799F835B" lyricid="72992cd90f1ae110" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_15" />15</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=33924F0B799F835B&gid=1d36f8ec499a2a34&s=%BB%C6%CF%E6%E2%F9&t=%D4%D9%BC%FB%B9%FD%C8%A5&lid=72992cd90f1ae110&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_14',0);uigsPB('consume=music_song&music_song=15&s=%BB%C6%CF%E6%E2%F9&t=%D4%D9%BC%FB%B9%FD%C8%A5');return(false);" entitle="%D4%D9%BC%FB%B9%FD%C8%A5" title="再见过去" action="listen">再见过去</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%BB%C6%CF%E6%E2%F9" href="http://music.sogou.com/singer/50/detailSinger_%BB%C6%CF%E6%E2%F9.html" entitle="%BB%C6%CF%E6%E2%F9" title="黄湘怡" target=_blank uigs="consume=music_singer&music_singer=15&s=%BB%C6%CF%E6%E2%F9&t=%D4%D9%BC%FB%B9%FD%C8%A5">黄湘怡</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/50/detailAlbum_%BB%C6%CF%E6%E2%F9!!stella%20%BF%F1%CF%EB%C7%FA.html" entitle="Stella+%BF%F1%CF%EB%C7%FA" title="Stella 狂想曲" target=_blank uigs="consume=music_album&music_album=15&s=%BB%C6%CF%E6%E2%F9&t=%D4%D9%BC%FB%B9%FD%C8%A5" >Stella 狂想曲</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=33924F0B799F835B&gid=1d36f8ec499a2a34&s=%BB%C6%CF%E6%E2%F9&t=%D4%D9%BC%FB%B9%FD%C8%A5&lid=72992cd90f1ae110&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_14',0);uigsPB('consume=music_listen&music_listen=15&s=%BB%C6%CF%E6%E2%F9&t=%D4%D9%BC%FB%B9%FD%C8%A5');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=33924F0B799F835B&gid=1d36f8ec499a2a34&s=%BB%C6%CF%E6%E2%F9&t=%D4%D9%BC%FB%B9%FD%C8%A5&lid=72992cd90f1ae110&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_14',1);uigsPB('consume=music_listen_append&music_listen=15&s=%BB%C6%CF%E6%E2%F9&t=%D4%D9%BC%FB%B9%FD%C8%A5');append('songtip_14');return(false);">添加</a></span><span class="addtip" id="songtip_14" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=33924F0B799F835B&globalId=1d36f8ec499a2a34&query=%D4%D9%BC%FB%B9%FD%C8%A5&tgid=6e2d59a88d79ae4f&pf=wma&s=%BB%C6%CF%E6%E2%F9&t=%D4%D9%BC%FB%B9%FD%C8%A5&size=1057545&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=15&s=%BB%C6%CF%E6%E2%F9&t=%D4%D9%BC%FB%B9%FD%C8%A5');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%D4%D9%BC%FB%B9%FD%C8%A5%20%BB%C6%CF%E6%E2%F9&lyricId=72992cd90f1ae110" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=15&s=%BB%C6%CF%E6%E2%F9&t=%D4%D9%BC%FB%B9%FD%C8%A5" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>1.01M<!--size:1.01M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_14" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>承认你已经&nbsp;&nbsp;从我的世界<font style="color:red;text-decoration:underline;">走出去</font> 回家的路&nbsp;&nbsp;我梦见一望无际花海 真的感激&nbsp;&nbsp;又看得见大然美丽 不再哭泣&nbsp;&nbsp;才能够看得清晰 我...分离&nbsp;&nbsp;我不会否定&nbsp;&nbsp;因为它是我成长的日记&nbsp;&nbsp;最后一次回头看才明白&nbsp;&nbsp;原来伤心是旅程中必须经过的小镇&nbsp;&nbsp;离开后我更<font style="color:red;text-decoration:underline;">勇敢</font> 再见...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_15">
+	<td  class="cbbox"><label><input id="checkboxmc_15" type="checkbox" name="batchlistenm" section="bl" t="%BE%F6%D0%C4" s="%D5%D4%B4%AB" gid="1b5a0b1d918fdf67" cid="14DB8A46A3A3ED09" lyricid="7268637b72f2a804" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_16" />16</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=14DB8A46A3A3ED09&gid=1b5a0b1d918fdf67&s=%D5%D4%B4%AB&t=%BE%F6%D0%C4&lid=7268637b72f2a804&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_15',0);uigsPB('consume=music_song&music_song=16&s=%D5%D4%B4%AB&t=%BE%F6%D0%C4');return(false);" entitle="%BE%F6%D0%C4" title="决心" action="listen">决心</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D5%D4%B4%AB" href="http://music.sogou.com/singer/44/detailSinger_%D5%D4%B4%AB.html" entitle="%D5%D4%B4%AB" title="赵传" target=_blank uigs="consume=music_singer&music_singer=16&s=%D5%D4%B4%AB&t=%BE%F6%D0%C4">赵传</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/44/detailAlbum_%D5%D4%B4%AB!!%CE%D2%BA%DC%B3%F3%2C%BF%C9%CA%C7%CE%D2%BA%DC%CE%C2%C8%E1.html" entitle="%CE%D2%BA%DC%B3%F3%2C%BF%C9%CA%C7%CE%D2%BA%DC%CE%C2%C8%E1" title="我很丑,可是我很温柔" target=_blank uigs="consume=music_album&music_album=16&s=%D5%D4%B4%AB&t=%BE%F6%D0%C4" >我很丑,可是我很温柔</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=14DB8A46A3A3ED09&gid=1b5a0b1d918fdf67&s=%D5%D4%B4%AB&t=%BE%F6%D0%C4&lid=7268637b72f2a804&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_15',0);uigsPB('consume=music_listen&music_listen=16&s=%D5%D4%B4%AB&t=%BE%F6%D0%C4');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=14DB8A46A3A3ED09&gid=1b5a0b1d918fdf67&s=%D5%D4%B4%AB&t=%BE%F6%D0%C4&lid=7268637b72f2a804&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_15',1);uigsPB('consume=music_listen_append&music_listen=16&s=%D5%D4%B4%AB&t=%BE%F6%D0%C4');append('songtip_15');return(false);">添加</a></span><span class="addtip" id="songtip_15" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=14DB8A46A3A3ED09&globalId=1b5a0b1d918fdf67&query=%BE%F6%D0%C4&tgid=659c493dd17fd373&pf=mp3&s=%D5%D4%B4%AB&t=%BE%F6%D0%C4&size=771085&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=16&s=%D5%D4%B4%AB&t=%BE%F6%D0%C4');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%BE%F6%D0%C4%20%D5%D4%B4%AB&lyricId=7268637b72f2a804" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=16&s=%D5%D4%B4%AB&t=%BE%F6%D0%C4" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>0.74M<!--size:0.74M--></td>
+	<td>mp3</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_15" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>须要把握住这机会&nbsp;&nbsp;不要以后再来后悔&nbsp;&nbsp;我要站起来<font style="color:red;text-decoration:underline;">走出去</font>&nbsp;&nbsp;走向我的新生活&nbsp;&nbsp;这是坚强的决心&nbsp;&nbsp;就这样<font style="color:red;text-decoration:underline;">勇敢</font>的冲出去&nbsp;&nbsp;noni99@sina.com</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_16">
+	<td  class="cbbox"><label><input id="checkboxmc_16" type="checkbox" name="batchlistenm" section="bl" t="%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6" s="%B3%C2%DE%C8%D1%B8" gid="1d0f3870b8531ac1" cid="1D1F0B4F467DE91C" lyricid="72f29b4ab6201ed3" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_17" />17</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=1D1F0B4F467DE91C&gid=1d0f3870b8531ac1&s=%B3%C2%DE%C8%D1%B8&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6&lid=72f29b4ab6201ed3&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_16',0);uigsPB('consume=music_song&music_song=17&s=%B3%C2%DE%C8%D1%B8&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6');return(false);" entitle="%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6" title="两名男子街头相遇" action="listen">两名男子街头相遇</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%B3%C2%DE%C8%D1%B8" href="http://music.sogou.com/singer/ca/detailSinger_%B3%C2%DE%C8%D1%B8.html" entitle="%B3%C2%DE%C8%D1%B8" title="陈奕迅" target=_blank uigs="consume=music_singer&music_singer=17&s=%B3%C2%DE%C8%D1%B8&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6">陈奕迅</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/ca/detailAlbum_%B3%C2%DE%C8%D1%B8!!the%20line-up.html" entitle="The+Line-up" title="The Line-up" target=_blank uigs="consume=music_album&music_album=17&s=%B3%C2%DE%C8%D1%B8&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6" >The Line-up</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=1D1F0B4F467DE91C&gid=1d0f3870b8531ac1&s=%B3%C2%DE%C8%D1%B8&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6&lid=72f29b4ab6201ed3&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_16',0);uigsPB('consume=music_listen&music_listen=17&s=%B3%C2%DE%C8%D1%B8&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=1D1F0B4F467DE91C&gid=1d0f3870b8531ac1&s=%B3%C2%DE%C8%D1%B8&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6&lid=72f29b4ab6201ed3&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_16',1);uigsPB('consume=music_listen_append&music_listen=17&s=%B3%C2%DE%C8%D1%B8&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6');append('songtip_16');return(false);">添加</a></span><span class="addtip" id="songtip_16" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=1D1F0B4F467DE91C&globalId=1d0f3870b8531ac1&query=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6&tgid=679c45c6446067d6&pf=mp3&s=%B3%C2%DE%C8%D1%B8&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6&size=265949&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=17&s=%B3%C2%DE%C8%D1%B8&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6%20%B3%C2%DE%C8%D1%B8&lyricId=72f29b4ab6201ed3" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=17&s=%B3%C2%DE%C8%D1%B8&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>0.25M<!--size:0.25M--></td>
+	<td>mp3</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_16" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>huh&nbsp;&nbsp;你重出街 乜你真系咁鬼蠢&nbsp;&nbsp;梳过头 熄了灯&nbsp;&nbsp;<font style="color:red;text-decoration:underline;">出去</font>记得锁上门&nbsp;&nbsp;和想清想楚 有没有身份证&nbsp;&nbsp;记得带齐 信用咭&nbsp;&nbsp;钞票驾驶执...<font style="color:red;text-decoration:underline;">走</font>去买个Barbie&nbsp;&nbsp;佢望o左我一眼 话我鬼咁白痴&nbsp;&nbsp;出o黎行 梗系要有LV&nbsp;&nbsp;已经带备 八达通 八达四通的马路&nbsp;&nbsp;连街口7仔 都怕我...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_17">
+	<td  class="cbbox"><label><input id="checkboxmc_17" type="checkbox" name="batchlistenm" section="bl" t="%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8" s="Mon+Mon" gid="1cf0689e329560fb" cid="18898D1D336AF778" lyricid="73e54fad39546046" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_18" />18</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=18898D1D336AF778&gid=1cf0689e329560fb&s=Mon+Mon&t=%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8&lid=73e54fad39546046&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_17',0);uigsPB('consume=music_song&music_song=18&s=Mon+Mon&t=%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8');return(false);" entitle="%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8" title="疯了一样的天气" action="listen">疯了一样的天气</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="Mon+Mon" href="http://music.sogou.com/singer/6e/detailSinger_mon%20mon.html" entitle="Mon+Mon" title="Mon Mon" target=_blank uigs="consume=music_singer&music_singer=18&s=Mon+Mon&t=%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8">Mon Mon</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/6e/detailAlbum_mon%20mon!!%C3%CE%D3%CE%BC%C7.html" entitle="%C3%CE%D3%CE%BC%C7" title="梦游记" target=_blank uigs="consume=music_album&music_album=18&s=Mon+Mon&t=%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8" >梦游记</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=18898D1D336AF778&gid=1cf0689e329560fb&s=Mon+Mon&t=%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8&lid=73e54fad39546046&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_17',0);uigsPB('consume=music_listen&music_listen=18&s=Mon+Mon&t=%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=18898D1D336AF778&gid=1cf0689e329560fb&s=Mon+Mon&t=%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8&lid=73e54fad39546046&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_17',1);uigsPB('consume=music_listen_append&music_listen=18&s=Mon+Mon&t=%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8');append('songtip_17');return(false);">添加</a></span><span class="addtip" id="songtip_17" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=18898D1D336AF778&globalId=1cf0689e329560fb&query=%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8&tgid=6d32de84d29680c3&pf=mp3&s=Mon+Mon&t=%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8&size=287056&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=18&s=Mon+Mon&t=%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8%20Mon+Mon&lyricId=73e54fad39546046" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=18&s=Mon+Mon&t=%B7%E8%C1%CB%D2%BB%D1%F9%B5%C4%CC%EC%C6%F8" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>0.27M<!--size:0.27M--></td>
+	<td>mp3</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_17" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>希望她能开心每一天&nbsp;&nbsp;雨还不停&nbsp;&nbsp;好象下了几个世纪&nbsp;&nbsp;雨还不停&nbsp;&nbsp;我在家里<font style="color:red;text-decoration:underline;">走</font>不<font style="color:red;text-decoration:underline;">出去</font>&nbsp;&nbsp;我的发型&nbsp;&nbsp;适合没有&nbsp;&nbsp;雨的天气&nbsp;&nbsp;雨还不停&nbsp;&nbsp;美...希望她能开心每一天&nbsp;&nbsp;啊怎么还不停&nbsp;&nbsp;啊啊啊...&nbsp;&nbsp;原来雨里&nbsp;&nbsp;可以是疯狂的天气&nbsp;&nbsp;<font style="color:red;text-decoration:underline;">勇敢</font>了&nbsp;&nbsp;心情就自由了</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_18">
+	<td  class="cbbox"><label><input id="checkboxmc_18" type="checkbox" name="batchlistenm" section="bl" t="%CC%EC%C6%F8" s="%CA%B8%D2%B0%D5%E6%BC%CD+" gid="1ded7c113778302c" cid="3A26C4934E29A0EF" lyricid="72744a955435b2a2" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_19" />19</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=3A26C4934E29A0EF&gid=1ded7c113778302c&s=%CA%B8%D2%B0%D5%E6%BC%CD+&t=%CC%EC%C6%F8&lid=72744a955435b2a2&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_18',0);uigsPB('consume=music_song&music_song=19&s=%CA%B8%D2%B0%D5%E6%BC%CD+&t=%CC%EC%C6%F8');return(false);" entitle="%CC%EC%C6%F8" title="天气" action="listen">天气</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%CA%B8%D2%B0%D5%E6%BC%CD" href="http://music.sogou.com/singer/3c/detailSinger_%CA%B8%D2%B0%D5%E6%BC%CD.html" entitle="%CA%B8%D2%B0%D5%E6%BC%CD+" title="矢野真纪" target=_blank uigs="consume=music_singer&music_singer=19&s=%CA%B8%D2%B0%D5%E6%BC%CD+&t=%CC%EC%C6%F8">矢野真纪</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/21/detailAlbum_%CA%B8%D2%B0%D5%E6%BC%CD%20!!%A4%A2%A4%A4%A4%A4%A4%ED.html" entitle="%A4%A2%A4%A4%A4%A4%A4%ED" title="あいいろ" target=_blank uigs="consume=music_album&music_album=19&s=%CA%B8%D2%B0%D5%E6%BC%CD+&t=%CC%EC%C6%F8" >あいいろ</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=3A26C4934E29A0EF&gid=1ded7c113778302c&s=%CA%B8%D2%B0%D5%E6%BC%CD+&t=%CC%EC%C6%F8&lid=72744a955435b2a2&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_18',0);uigsPB('consume=music_listen&music_listen=19&s=%CA%B8%D2%B0%D5%E6%BC%CD+&t=%CC%EC%C6%F8');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=3A26C4934E29A0EF&gid=1ded7c113778302c&s=%CA%B8%D2%B0%D5%E6%BC%CD+&t=%CC%EC%C6%F8&lid=72744a955435b2a2&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_18',1);uigsPB('consume=music_listen_append&music_listen=19&s=%CA%B8%D2%B0%D5%E6%BC%CD+&t=%CC%EC%C6%F8');append('songtip_18');return(false);">添加</a></span><span class="addtip" id="songtip_18" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=3A26C4934E29A0EF&globalId=1ded7c113778302c&query=%CC%EC%C6%F8&tgid=616484c5dce724a7&pf=wma&s=%CA%B8%D2%B0%D5%E6%BC%CD+&t=%CC%EC%C6%F8&size=2285342&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=19&s=%CA%B8%D2%B0%D5%E6%BC%CD+&t=%CC%EC%C6%F8');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%CC%EC%C6%F8%20%CA%B8%D2%B0%D5%E6%BC%CD+&lyricId=72744a955435b2a2" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=19&s=%CA%B8%D2%B0%D5%E6%BC%CD+&t=%CC%EC%C6%F8" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>2.18M<!--size:2.18M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_18" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>希望她能开心每一天&nbsp;&nbsp;雨还不停&nbsp;&nbsp;好象下了几个世纪&nbsp;&nbsp;雨还不停&nbsp;&nbsp;我在家里<font style="color:red;text-decoration:underline;">走</font>不<font style="color:red;text-decoration:underline;">出去</font>&nbsp;&nbsp;我的发型&nbsp;&nbsp;适合没有&nbsp;&nbsp;雨的天气&nbsp;&nbsp;雨还不停&nbsp;&nbsp;美...希望她能开心每一天&nbsp;&nbsp;啊怎么还不停&nbsp;&nbsp;啊啊啊...&nbsp;&nbsp;原来雨里&nbsp;&nbsp;可以是疯狂的天气&nbsp;&nbsp;<font style="color:red;text-decoration:underline;">勇敢</font>了&nbsp;&nbsp;心情就自由了</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_19">
+	<td  class="cbbox"><label><input id="checkboxmc_19" type="checkbox" name="batchlistenm" section="bl" t="%F6%A6%D7%D0" s="%B3%C2%B9%DA%CF%A3" gid="16ee886688fdc601" cid="1AEE9CA320C94DBC" lyricid="75ada2d721908d61" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_20" />20</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=1AEE9CA320C94DBC&gid=16ee886688fdc601&s=%B3%C2%B9%DA%CF%A3&t=%F6%A6%D7%D0&lid=75ada2d721908d61&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_19',0);uigsPB('consume=music_song&music_song=20&s=%B3%C2%B9%DA%CF%A3&t=%F6%A6%D7%D0');return(false);" entitle="%F6%A6%D7%D0" title="靓仔" action="listen">靓仔</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%B3%C2%B9%DA%CF%A3" href="http://music.sogou.com/singer/34/detailSinger_%B3%C2%B9%DA%CF%A3.html" entitle="%B3%C2%B9%DA%CF%A3" title="陈冠希" target=_blank uigs="consume=music_singer&music_singer=20&s=%B3%C2%B9%DA%CF%A3&t=%F6%A6%D7%D0">陈冠希</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/34/detailAlbum_%B3%C2%B9%DA%CF%A3!!break%20through.html" entitle="Break+Through" title="Break Through" target=_blank uigs="consume=music_album&music_album=20&s=%B3%C2%B9%DA%CF%A3&t=%F6%A6%D7%D0" >Break Through</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=1AEE9CA320C94DBC&gid=16ee886688fdc601&s=%B3%C2%B9%DA%CF%A3&t=%F6%A6%D7%D0&lid=75ada2d721908d61&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_19',0);uigsPB('consume=music_listen&music_listen=20&s=%B3%C2%B9%DA%CF%A3&t=%F6%A6%D7%D0');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=1AEE9CA320C94DBC&gid=16ee886688fdc601&s=%B3%C2%B9%DA%CF%A3&t=%F6%A6%D7%D0&lid=75ada2d721908d61&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_19',1);uigsPB('consume=music_listen_append&music_listen=20&s=%B3%C2%B9%DA%CF%A3&t=%F6%A6%D7%D0');append('songtip_19');return(false);">添加</a></span><span class="addtip" id="songtip_19" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=1AEE9CA320C94DBC&globalId=16ee886688fdc601&query=%F6%A6%D7%D0&tgid=61987b782277b001&pf=mp3&s=%B3%C2%B9%DA%CF%A3&t=%F6%A6%D7%D0&size=318867&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=20&s=%B3%C2%B9%DA%CF%A3&t=%F6%A6%D7%D0');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%F6%A6%D7%D0%20%B3%C2%B9%DA%CF%A3&lyricId=75ada2d721908d61" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=20&s=%B3%C2%B9%DA%CF%A3&t=%F6%A6%D7%D0" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>0.30M<!--size:0.30M--></td>
+	<td>mp3</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_19" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>huh&nbsp;&nbsp;你重出街乜你真系咁鬼蠢&nbsp;&nbsp;梳过头熄了灯&nbsp;&nbsp;<font style="color:red;text-decoration:underline;">出去</font>记得锁上门&nbsp;&nbsp;和想清想楚有没有身份证&nbsp;&nbsp;记得带齐信用咭&nbsp;&nbsp;钞票驾驶执照&nbsp;&nbsp;为...ex 一般的<font style="color:red;text-decoration:underline;">勇敢</font>&nbsp;&nbsp;我即席变身&nbsp;&nbsp;无论怕黑或怕死&nbsp;&nbsp;但今晚都总会赶到&nbsp;&nbsp;当整个都市都拦住我的去路&nbsp;&nbsp;无论怕贼或怕鬼&nbsp;&nbsp;若你阻我这个...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_20">
+	<td  class="cbbox"><label><input id="checkboxmc_20" type="checkbox" name="batchlistenm" section="bl" t="%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live" s="%B3%C2%DE%C8%D1%B8+EO2" gid="1a9bb321086d2e9b" cid="3DA0A212CC57F074" lyricid="7ff549a4aef66af9" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_21" />21</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=3DA0A212CC57F074&gid=1a9bb321086d2e9b&s=%B3%C2%DE%C8%D1%B8+EO2&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live&lid=7ff549a4aef66af9&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_20',0);uigsPB('consume=music_song&music_song=21&s=%B3%C2%DE%C8%D1%B8+EO2&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live');return(false);" entitle="%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live" title="两名男子街头相遇_Live" action="listen">两名男子街头相遇_Live</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%B3%C2%DE%C8%D1%B8" href="http://music.sogou.com/singer/ca/detailSinger_%B3%C2%DE%C8%D1%B8.html" entitle="%B3%C2%DE%C8%D1%B8+EO2" title="陈奕迅" target=_blank uigs="consume=music_singer&music_singer=21&s=%B3%C2%DE%C8%D1%B8+EO2&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live">陈奕迅</a>&nbsp;<a showSinger=t singer="EO2" href="http://music.sogou.com/singer/24/detailSinger_eo2.html" entitle="%B3%C2%DE%C8%D1%B8+EO2" title="EO2" target=_blank uigs="consume=music_singer&music_singer=21&s=%B3%C2%DE%C8%D1%B8+EO2&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live">EO2</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/33/detailAlbum_%B3%C2%DE%C8%D1%B8%20eo2!!08%C0%AD%C0%AB%B5%DA%D2%BB%B3%A1.html" entitle="08%C0%AD%C0%AB%B5%DA%D2%BB%B3%A1" title="08拉阔第一场" target=_blank uigs="consume=music_album&music_album=21&s=%B3%C2%DE%C8%D1%B8+EO2&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live" >08拉阔第一场</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=3DA0A212CC57F074&gid=1a9bb321086d2e9b&s=%B3%C2%DE%C8%D1%B8+EO2&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live&lid=7ff549a4aef66af9&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_20',0);uigsPB('consume=music_listen&music_listen=21&s=%B3%C2%DE%C8%D1%B8+EO2&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=3DA0A212CC57F074&gid=1a9bb321086d2e9b&s=%B3%C2%DE%C8%D1%B8+EO2&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live&lid=7ff549a4aef66af9&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_20',1);uigsPB('consume=music_listen_append&music_listen=21&s=%B3%C2%DE%C8%D1%B8+EO2&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live');append('songtip_20');return(false);">添加</a></span><span class="addtip" id="songtip_20" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=3DA0A212CC57F074&globalId=1a9bb321086d2e9b&query=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live&tgid=6c6e7b5e987980fd&pf=wma&s=%B3%C2%DE%C8%D1%B8+EO2&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live&size=1873463&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=21&s=%B3%C2%DE%C8%D1%B8+EO2&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live%20%B3%C2%DE%C8%D1%B8+EO2&lyricId=7ff549a4aef66af9" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=21&s=%B3%C2%DE%C8%D1%B8+EO2&t=%C1%BD%C3%FB%C4%D0%D7%D3%BD%D6%CD%B7%CF%E0%D3%F6_Live" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>1.79M<!--size:1.79M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_20" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>huh&nbsp;&nbsp;你重出街乜你真系咁鬼蠢&nbsp;&nbsp;梳过头熄了灯&nbsp;&nbsp;<font style="color:red;text-decoration:underline;">出去</font>记得锁上门&nbsp;&nbsp;和想清想楚有没有身份证&nbsp;&nbsp;记得带齐信用咭&nbsp;&nbsp;钞票驾驶执照&nbsp;&nbsp;为...ex 一般的<font style="color:red;text-decoration:underline;">勇敢</font>&nbsp;&nbsp;我即席变身&nbsp;&nbsp;无论怕黑或怕死&nbsp;&nbsp;但今晚都总会赶到&nbsp;&nbsp;当整个都市都拦住我的去路&nbsp;&nbsp;无论怕贼或怕鬼&nbsp;&nbsp;若你阻我这个...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_21">
+	<td  class="cbbox"><label><input id="checkboxmc_21" type="checkbox" name="batchlistenm" section="bl" t="%B8%A1%C9%FA%C1%F9%BC%C7" s="%C1%D6%DE%C8%BF%EF" gid="170182e48110a641" cid="15C383E974992FF8" lyricid="70d034d2bf660bbe" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_22" />22</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=15C383E974992FF8&gid=170182e48110a641&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7&lid=70d034d2bf660bbe&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_21',0);uigsPB('consume=music_song&music_song=22&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7');return(false);" entitle="%B8%A1%C9%FA%C1%F9%BC%C7" title="浮生六记" action="listen">浮生六记</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%C1%D6%DE%C8%BF%EF" href="http://music.sogou.com/singer/09/detailSinger_%C1%D6%DE%C8%BF%EF.html" entitle="%C1%D6%DE%C8%BF%EF" title="林奕匡" target=_blank uigs="consume=music_singer&music_singer=22&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7">林奕匡</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/09/detailAlbum_%C1%D6%DE%C8%BF%EF!!%C1%D6%DE%C8%BF%EFphil%20lam.html" entitle="%C1%D6%DE%C8%BF%EFPhil+Lam" title="林奕匡Phil Lam" target=_blank uigs="consume=music_album&music_album=22&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7" >林奕匡Phil Lam</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=15C383E974992FF8&gid=170182e48110a641&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7&lid=70d034d2bf660bbe&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_21',0);uigsPB('consume=music_listen&music_listen=22&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=15C383E974992FF8&gid=170182e48110a641&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7&lid=70d034d2bf660bbe&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_21',1);uigsPB('consume=music_listen_append&music_listen=22&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7');append('songtip_21');return(false);">添加</a></span><span class="addtip" id="songtip_21" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=15C383E974992FF8&globalId=170182e48110a641&query=%B8%A1%C9%FA%C1%F9%BC%C7&tgid=67c7e9b5f2aaf02e&pf=mp3&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7&size=3425174&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=22&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%B8%A1%C9%FA%C1%F9%BC%C7%20%C1%D6%DE%C8%BF%EF&lyricId=70d034d2bf660bbe" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=22&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>3.27M<!--size:3.27M--></td>
+	<td>mp3</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_21" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>当初想得多浪漫&nbsp;&nbsp;最后只赚得晚餐和帐单&nbsp;&nbsp;他的画已画完 自觉一时无两&nbsp;&nbsp;画中星光灿烂 世间却有冷暖&nbsp;&nbsp;卖不<font style="color:red;text-decoration:underline;">出去</font>的灵感 咄咄逼...谁不愿停站&nbsp;&nbsp;谁爱得<font style="color:red;text-decoration:underline;">勇敢</font> 谁<font style="color:red;text-decoration:underline;">走</font>得太慢 谁被谁观看&nbsp;&nbsp;她不需要同伴 环游世界乱闯&nbsp;&nbsp;只爱绿水青山 从不留恋旅馆&nbsp;&nbsp;靠风景填平孤...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_22">
+	<td  class="cbbox"><label><input id="checkboxmc_22" type="checkbox" name="batchlistenm" section="bl" t="%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29" s="%C1%D6%DE%C8%BF%EF" gid="114a3a8f26b34d59" cid="3A8AB47D35BCF33B" lyricid="70d034d2bf660bbe" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_23" />23</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=3A8AB47D35BCF33B&gid=114a3a8f26b34d59&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29&lid=70d034d2bf660bbe&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_22',0);uigsPB('consume=music_song&music_song=23&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29');return(false);" entitle="%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29" title="浮生六记 (国语)" action="listen">浮生六记 (国语)</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%C1%D6%DE%C8%BF%EF" href="http://music.sogou.com/singer/09/detailSinger_%C1%D6%DE%C8%BF%EF.html" entitle="%C1%D6%DE%C8%BF%EF" title="林奕匡" target=_blank uigs="consume=music_singer&music_singer=23&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29">林奕匡</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/09/detailAlbum_%C1%D6%DE%C8%BF%EF!!loaded.html" entitle="Loaded" title="Loaded" target=_blank uigs="consume=music_album&music_album=23&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29" >Loaded</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=3A8AB47D35BCF33B&gid=114a3a8f26b34d59&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29&lid=70d034d2bf660bbe&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_22',0);uigsPB('consume=music_listen&music_listen=23&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=3A8AB47D35BCF33B&gid=114a3a8f26b34d59&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29&lid=70d034d2bf660bbe&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_22',1);uigsPB('consume=music_listen_append&music_listen=23&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29');append('songtip_22');return(false);">添加</a></span><span class="addtip" id="songtip_22" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=3A8AB47D35BCF33B&globalId=114a3a8f26b34d59&query=%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29&tgid=6d3cac622bd913ff&pf=wma&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29&size=1750718&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=23&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29%20%C1%D6%DE%C8%BF%EF&lyricId=70d034d2bf660bbe" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=23&s=%C1%D6%DE%C8%BF%EF&t=%B8%A1%C9%FA%C1%F9%BC%C7+%28%B9%FA%D3%EF%29" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>1.67M<!--size:1.67M--></td>
+	<td>wma</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_22" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>当初想得多浪漫&nbsp;&nbsp;最后只赚得晚餐和帐单&nbsp;&nbsp;他的画已画完 自觉一时无两&nbsp;&nbsp;画中星光灿烂 世间却有冷暖&nbsp;&nbsp;卖不<font style="color:red;text-decoration:underline;">出去</font>的灵感 咄咄逼...谁不愿停站&nbsp;&nbsp;谁爱得<font style="color:red;text-decoration:underline;">勇敢</font> 谁<font style="color:red;text-decoration:underline;">走</font>得太慢 谁被谁观看&nbsp;&nbsp;她不需要同伴 环游世界乱闯&nbsp;&nbsp;只爱绿水青山 从不留恋旅馆&nbsp;&nbsp;靠风景填平孤...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_23">
+	<td  class="cbbox"><label><input id="checkboxmc_23" type="checkbox" name="batchlistenm" section="bl" t="%CB%B2%BC%E4%B9%FD%B5%E7" s="%C0%EE%E6%AD%C2%FE" gid="1ce4e38f8ee11b03" cid="156ADC53F1EACB9E" lyricid="74a5a629d08c1e63" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_24" />24</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=156ADC53F1EACB9E&gid=1ce4e38f8ee11b03&s=%C0%EE%E6%AD%C2%FE&t=%CB%B2%BC%E4%B9%FD%B5%E7&lid=74a5a629d08c1e63&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_23',0);uigsPB('consume=music_song&music_song=24&s=%C0%EE%E6%AD%C2%FE&t=%CB%B2%BC%E4%B9%FD%B5%E7');return(false);" entitle="%CB%B2%BC%E4%B9%FD%B5%E7" title="瞬间过电" action="listen">瞬间过电</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%C0%EE%E6%AD%C2%FE" href="http://music.sogou.com/singer/17/detailSinger_%C0%EE%E6%AD%C2%FE.html" entitle="%C0%EE%E6%AD%C2%FE" title="李姝漫" target=_blank uigs="consume=music_singer&music_singer=24&s=%C0%EE%E6%AD%C2%FE&t=%CB%B2%BC%E4%B9%FD%B5%E7">李姝漫</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/17/detailAlbum_%C0%EE%E6%AD%C2%FE!!%BE%F8%B2%BB%C8%C3%C4%E3%D7%DF%28ep%29.html" entitle="%BE%F8%B2%BB%C8%C3%C4%E3%D7%DF%28EP%29" title="绝不让你走(EP)" target=_blank uigs="consume=music_album&music_album=24&s=%C0%EE%E6%AD%C2%FE&t=%CB%B2%BC%E4%B9%FD%B5%E7" >绝不让你走(EP)</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=156ADC53F1EACB9E&gid=1ce4e38f8ee11b03&s=%C0%EE%E6%AD%C2%FE&t=%CB%B2%BC%E4%B9%FD%B5%E7&lid=74a5a629d08c1e63&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_23',0);uigsPB('consume=music_listen&music_listen=24&s=%C0%EE%E6%AD%C2%FE&t=%CB%B2%BC%E4%B9%FD%B5%E7');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=156ADC53F1EACB9E&gid=1ce4e38f8ee11b03&s=%C0%EE%E6%AD%C2%FE&t=%CB%B2%BC%E4%B9%FD%B5%E7&lid=74a5a629d08c1e63&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_23',1);uigsPB('consume=music_listen_append&music_listen=24&s=%C0%EE%E6%AD%C2%FE&t=%CB%B2%BC%E4%B9%FD%B5%E7');append('songtip_23');return(false);">添加</a></span><span class="addtip" id="songtip_23" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=156ADC53F1EACB9E&globalId=1ce4e38f8ee11b03&query=%CB%B2%BC%E4%B9%FD%B5%E7&tgid=6445bc9edc30e90c&pf=mp3&s=%C0%EE%E6%AD%C2%FE&t=%CB%B2%BC%E4%B9%FD%B5%E7&size=3809854&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=24&s=%C0%EE%E6%AD%C2%FE&t=%CB%B2%BC%E4%B9%FD%B5%E7');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%CB%B2%BC%E4%B9%FD%B5%E7%20%C0%EE%E6%AD%C2%FE&lyricId=74a5a629d08c1e63" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=24&s=%C0%EE%E6%AD%C2%FE&t=%CB%B2%BC%E4%B9%FD%B5%E7" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>3.63M<!--size:3.63M--></td>
+	<td>mp3</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_23" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>瞬间过电&nbsp;&nbsp;词曲:张冉冉&nbsp;&nbsp;演唱:李姝漫&nbsp;&nbsp;心情有点坏坏地&nbsp;&nbsp;想要<font style="color:red;text-decoration:underline;">出去</font>透透气&nbsp;&nbsp;开着车子在街上&nbsp;&nbsp;无聊转来又转去&nbsp;&nbsp;转身<font style="color:red;text-decoration:underline;">走</font>进酒吧里&nbsp;&nbsp;想...瞬间过电&nbsp;&nbsp;不出一分钟有点动心&nbsp;&nbsp;瞬间过电&nbsp;&nbsp;难道这就是一见钟情&nbsp;&nbsp;瞬间过电&nbsp;&nbsp;这算不算爱的开始&nbsp;&nbsp;瞬间过电&nbsp;&nbsp;我想<font style="color:red;text-decoration:underline;">勇敢</font>去尝试尝试 </td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_24">
+	<td  class="cbbox"><label><input id="checkboxmc_24" type="checkbox" name="batchlistenm" section="bl" t="%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6" s="%BD%AD%CA%E7%C4%C8" gid="1c981b0443c58229" cid="1F761195418E0460" lyricid="7e2dd9b9f3a013e6" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_25" />25</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=1F761195418E0460&gid=1c981b0443c58229&s=%BD%AD%CA%E7%C4%C8&t=%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6&lid=7e2dd9b9f3a013e6&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_24',0);uigsPB('consume=music_song&music_song=25&s=%BD%AD%CA%E7%C4%C8&t=%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6');return(false);" entitle="%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6" title="不爱了_电台版" action="listen">不爱了_电台版</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%BD%AD%CA%E7%C4%C8" href="http://music.sogou.com/singer/46/detailSinger_%BD%AD%CA%E7%C4%C8.html" entitle="%BD%AD%CA%E7%C4%C8" title="江淑娜" target=_blank uigs="consume=music_singer&music_singer=25&s=%BD%AD%CA%E7%C4%C8&t=%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6">江淑娜</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/46/detailSinger_%BD%AD%CA%E7%C4%C8.html" entitle="" title="" target=_blank uigs="consume=music_album&music_album=25&s=%BD%AD%CA%E7%C4%C8&t=%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6" ></a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=1F761195418E0460&gid=1c981b0443c58229&s=%BD%AD%CA%E7%C4%C8&t=%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6&lid=7e2dd9b9f3a013e6&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_24',0);uigsPB('consume=music_listen&music_listen=25&s=%BD%AD%CA%E7%C4%C8&t=%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=1F761195418E0460&gid=1c981b0443c58229&s=%BD%AD%CA%E7%C4%C8&t=%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6&lid=7e2dd9b9f3a013e6&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_24',1);uigsPB('consume=music_listen_append&music_listen=25&s=%BD%AD%CA%E7%C4%C8&t=%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6');append('songtip_24');return(false);">添加</a></span><span class="addtip" id="songtip_24" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=1F761195418E0460&globalId=1c981b0443c58229&query=%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6&tgid=6efa07ad8e438f5d&pf=mp3&s=%BD%AD%CA%E7%C4%C8&t=%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6&size=9318177&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=25&s=%BD%AD%CA%E7%C4%C8&t=%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6%20%BD%AD%CA%E7%C4%C8&lyricId=7e2dd9b9f3a013e6" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=25&s=%BD%AD%CA%E7%C4%C8&t=%B2%BB%B0%AE%C1%CB_%B5%E7%CC%A8%B0%E6" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>8.89M<!--size:8.89M--></td>
+	<td>mp3</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_24" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>到希望爱情土里换个花期&nbsp;&nbsp;把纠结变成了云等待下一场雨&nbsp;&nbsp;如果是竭尽全力&nbsp;&nbsp;仍改不了命中注定&nbsp;&nbsp;或许就承认吧&nbsp;&nbsp;该<font style="color:red;text-decoration:underline;">走</font>了&nbsp;&nbsp;把你爱伤晒<font style="color:red;text-decoration:underline;">出去</font>&nbsp;&nbsp;结束交换品&nbsp;&nbsp;把我去缩进一些进退都失去&nbsp;&nbsp;如果离开时更难看见自己&nbsp;&nbsp;就<font style="color:red;text-decoration:underline;">勇敢</font>一点说不爱你&nbsp;&nbsp;要等我们都离&nbsp;&nbsp;终于不成问...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_25">
+	<td  class="cbbox"><label><input id="checkboxmc_25" type="checkbox" name="batchlistenm" section="bl" t="%E9%DC%C7%B0%D3%EA" s="%B2%CC%B4%BE%BC%D1" gid="1ecf45dcb6057f63" cid="1ED3BD18AA8B0289" lyricid="7b300df4fe8506e7" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_26" />26</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=1ED3BD18AA8B0289&gid=1ecf45dcb6057f63&s=%B2%CC%B4%BE%BC%D1&t=%E9%DC%C7%B0%D3%EA&lid=7b300df4fe8506e7&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_25',0);uigsPB('consume=music_song&music_song=26&s=%B2%CC%B4%BE%BC%D1&t=%E9%DC%C7%B0%D3%EA');return(false);" entitle="%E9%DC%C7%B0%D3%EA" title="檐前雨" action="listen">檐前雨</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%B2%CC%B4%BE%BC%D1" href="http://music.sogou.com/singer/c8/detailSinger_%B2%CC%B4%BE%BC%D1.html" entitle="%B2%CC%B4%BE%BC%D1" title="蔡淳佳" target=_blank uigs="consume=music_singer&music_singer=26&s=%B2%CC%B4%BE%BC%D1&t=%E9%DC%C7%B0%D3%EA">蔡淳佳</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/c8/detailAlbum_%B2%CC%B4%BE%BC%D1!!%BB%D8%B5%BD%D7%EE%B3%F5.html" entitle="%BB%D8%B5%BD%D7%EE%B3%F5" title="回到最初" target=_blank uigs="consume=music_album&music_album=26&s=%B2%CC%B4%BE%BC%D1&t=%E9%DC%C7%B0%D3%EA" >回到最初</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=1ED3BD18AA8B0289&gid=1ecf45dcb6057f63&s=%B2%CC%B4%BE%BC%D1&t=%E9%DC%C7%B0%D3%EA&lid=7b300df4fe8506e7&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_25',0);uigsPB('consume=music_listen&music_listen=26&s=%B2%CC%B4%BE%BC%D1&t=%E9%DC%C7%B0%D3%EA');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=1ED3BD18AA8B0289&gid=1ecf45dcb6057f63&s=%B2%CC%B4%BE%BC%D1&t=%E9%DC%C7%B0%D3%EA&lid=7b300df4fe8506e7&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_25',1);uigsPB('consume=music_listen_append&music_listen=26&s=%B2%CC%B4%BE%BC%D1&t=%E9%DC%C7%B0%D3%EA');append('songtip_25');return(false);">添加</a></span><span class="addtip" id="songtip_25" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=1ED3BD18AA8B0289&globalId=1ecf45dcb6057f63&query=%E9%DC%C7%B0%D3%EA&tgid=651bf74f743bda0f&pf=mp3&s=%B2%CC%B4%BE%BC%D1&t=%E9%DC%C7%B0%D3%EA&size=4019974&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=26&s=%B2%CC%B4%BE%BC%D1&t=%E9%DC%C7%B0%D3%EA');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%E9%DC%C7%B0%D3%EA%20%B2%CC%B4%BE%BC%D1&lyricId=7b300df4fe8506e7" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=26&s=%B2%CC%B4%BE%BC%D1&t=%E9%DC%C7%B0%D3%EA" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>3.83M<!--size:3.83M--></td>
+	<td>mp3</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_25" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>还想靠着你&nbsp;&nbsp;雨点慢慢滴成河&nbsp;&nbsp;送走了那个夏季&nbsp;&nbsp;数着檐前雨 现在没有你&nbsp;&nbsp;雨点滴成泪&nbsp;&nbsp;送走了爱过我那个你&nbsp;&nbsp;那教会我微笑的你&nbsp;&nbsp;我数着点点雨滴&nbsp;&nbsp;简单是美丽&nbsp;&nbsp;昨天它是个屋檐&nbsp;&nbsp;<font style="color:red;text-decoration:underline;">走出去</font>只要<font style="color:red;text-decoration:underline;">勇敢</font>深呼吸&nbsp;&nbsp;数着檐前雨 还想靠着你&nbsp;&nbsp;雨点慢慢滴成河&nbsp;&nbsp;送走了那个...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_26">
+	<td  class="cbbox"><label><input id="checkboxmc_26" type="checkbox" name="batchlistenm" section="bl" t="%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2" s="%D2%C1%C4%DC%BE%B2" gid="1c36868a55fd9f23" cid="14737B2DC442CA50" lyricid="701fcd78612b75f4" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_27" />27</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=14737B2DC442CA50&gid=1c36868a55fd9f23&s=%D2%C1%C4%DC%BE%B2&t=%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2&lid=701fcd78612b75f4&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_26',0);uigsPB('consume=music_song&music_song=27&s=%D2%C1%C4%DC%BE%B2&t=%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2');return(false);" entitle="%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2" title="流浪的小孩" action="listen">流浪的小孩</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%D2%C1%C4%DC%BE%B2" href="http://music.sogou.com/singer/6c/detailSinger_%D2%C1%C4%DC%BE%B2.html" entitle="%D2%C1%C4%DC%BE%B2" title="伊能静" target=_blank uigs="consume=music_singer&music_singer=27&s=%D2%C1%C4%DC%BE%B2&t=%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2">伊能静</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/6c/detailAlbum_%D2%C1%C4%DC%BE%B2!!%B4%D3%B4%E0%C8%F5%B5%BD%D3%C2%B8%D2.html" entitle="%B4%D3%B4%E0%C8%F5%B5%BD%D3%C2%B8%D2" title="从脆弱到勇敢" target=_blank uigs="consume=music_album&music_album=27&s=%D2%C1%C4%DC%BE%B2&t=%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2" >从脆弱到<font style="color:red;text-decoration:underline;">勇敢</font></a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=14737B2DC442CA50&gid=1c36868a55fd9f23&s=%D2%C1%C4%DC%BE%B2&t=%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2&lid=701fcd78612b75f4&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_26',0);uigsPB('consume=music_listen&music_listen=27&s=%D2%C1%C4%DC%BE%B2&t=%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=14737B2DC442CA50&gid=1c36868a55fd9f23&s=%D2%C1%C4%DC%BE%B2&t=%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2&lid=701fcd78612b75f4&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_26',1);uigsPB('consume=music_listen_append&music_listen=27&s=%D2%C1%C4%DC%BE%B2&t=%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2');append('songtip_26');return(false);">添加</a></span><span class="addtip" id="songtip_26" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=14737B2DC442CA50&globalId=1c36868a55fd9f23&query=%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2&tgid=615fc72d52f2fe37&pf=mp3&s=%D2%C1%C4%DC%BE%B2&t=%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2&size=4905714&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=27&s=%D2%C1%C4%DC%BE%B2&t=%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2%20%D2%C1%C4%DC%BE%B2&lyricId=701fcd78612b75f4" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=27&s=%D2%C1%C4%DC%BE%B2&t=%C1%F7%C0%CB%B5%C4%D0%A1%BA%A2" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>4.68M<!--size:4.68M--></td>
+	<td>mp3</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_26" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>少年多挥霍&nbsp;&nbsp;心比世界还宽容&nbsp;&nbsp;应该要往那里<font style="color:red;text-decoration:underline;">走</font>&nbsp;&nbsp;找到一个地方属于我&nbsp;&nbsp;不需要勉强虚伪&nbsp;&nbsp;心象风一样自由&nbsp;&nbsp;告别青涩和无知&nbsp;&nbsp;不希望自己变得太成熟&nbsp;&nbsp;成人的谎言太多&nbsp;&nbsp;梦也渐渐被现实夺<font style="color:red;text-decoration:underline;">走</font>&nbsp;&nbsp;我要<font style="color:red;text-decoration:underline;">出去</font><font style="color:red;text-decoration:underline;">走</font>一<font style="color:red;text-decoration:underline;">走</font>&nbsp;&nbsp;年少的心有勇气追求&nbsp;&nbsp;看世界多开阔 天能够有多...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_27">
+	<td  class="cbbox"><label><input id="checkboxmc_27" type="checkbox" name="batchlistenm" section="bl" t="%BA%C3%E6%A2%C3%C3" s="%B9%F9%CA%E9%D1%FE" gid="182e983cdc55b20e" cid="17F4F61EA968F690" lyricid="75c0b96ed697769a" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_28" />28</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=17F4F61EA968F690&gid=182e983cdc55b20e&s=%B9%F9%CA%E9%D1%FE&t=%BA%C3%E6%A2%C3%C3&lid=75c0b96ed697769a&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_27',0);uigsPB('consume=music_song&music_song=28&s=%B9%F9%CA%E9%D1%FE&t=%BA%C3%E6%A2%C3%C3');return(false);" entitle="%BA%C3%E6%A2%C3%C3" title="好姊妹" action="listen">好姊妹</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%B9%F9%CA%E9%D1%FE" href="http://music.sogou.com/singer/90/detailSinger_%B9%F9%CA%E9%D1%FE.html" entitle="%B9%F9%CA%E9%D1%FE" title="郭书瑶" target=_blank uigs="consume=music_singer&music_singer=28&s=%B9%F9%CA%E9%D1%FE&t=%BA%C3%E6%A2%C3%C3">郭书瑶</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/90/detailSinger_%B9%F9%CA%E9%D1%FE.html" entitle="" title="" target=_blank uigs="consume=music_album&music_album=28&s=%B9%F9%CA%E9%D1%FE&t=%BA%C3%E6%A2%C3%C3" ></a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=17F4F61EA968F690&gid=182e983cdc55b20e&s=%B9%F9%CA%E9%D1%FE&t=%BA%C3%E6%A2%C3%C3&lid=75c0b96ed697769a&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_27',0);uigsPB('consume=music_listen&music_listen=28&s=%B9%F9%CA%E9%D1%FE&t=%BA%C3%E6%A2%C3%C3');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=17F4F61EA968F690&gid=182e983cdc55b20e&s=%B9%F9%CA%E9%D1%FE&t=%BA%C3%E6%A2%C3%C3&lid=75c0b96ed697769a&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_27',1);uigsPB('consume=music_listen_append&music_listen=28&s=%B9%F9%CA%E9%D1%FE&t=%BA%C3%E6%A2%C3%C3');append('songtip_27');return(false);">添加</a></span><span class="addtip" id="songtip_27" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=17F4F61EA968F690&globalId=182e983cdc55b20e&query=%BA%C3%E6%A2%C3%C3&tgid=6d4f41f7afc6ae06&pf=mp3&s=%B9%F9%CA%E9%D1%FE&t=%BA%C3%E6%A2%C3%C3&size=5549601&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=28&s=%B9%F9%CA%E9%D1%FE&t=%BA%C3%E6%A2%C3%C3');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%BA%C3%E6%A2%C3%C3%20%B9%F9%CA%E9%D1%FE&lyricId=75c0b96ed697769a" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=28&s=%B9%F9%CA%E9%D1%FE&t=%BA%C3%E6%A2%C3%C3" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>5.29M<!--size:5.29M--></td>
+	<td>mp3</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_27" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>都要完美无缺&nbsp;&nbsp;放大片 大放电 只有你懂我&nbsp;&nbsp;好姊妹一说就通&nbsp;&nbsp;只要一个节奏就有动作&nbsp;&nbsp;好姊妹不用啰唆&nbsp;&nbsp;管他有空没空说<font style="color:red;text-decoration:underline;">走</font>就...交换今年&nbsp;&nbsp;送不<font style="color:red;text-decoration:underline;">出去</font>的围巾&nbsp;&nbsp;嘲笑彼此依然没有长进&nbsp;&nbsp;为什么 却觉得很安心&nbsp;&nbsp;越挫折越<font style="color:red;text-decoration:underline;">勇敢</font> 用力跑向前&nbsp;&nbsp;La La La La La La ...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_28">
+	<td  class="cbbox"><label><input id="checkboxmc_28" type="checkbox" name="batchlistenm" section="bl" t="%CA%AE%B7%D6K" s="%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6" gid="198c17d5390184d3" cid="1ED094CF9619C3E2" lyricid="7925ce25a22e8f51" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_29" />29</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=1ED094CF9619C3E2&gid=198c17d5390184d3&s=%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6&t=%CA%AE%B7%D6K&lid=7925ce25a22e8f51&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_28',0);uigsPB('consume=music_song&music_song=29&s=%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6&t=%CA%AE%B7%D6K');return(false);" entitle="%CA%AE%B7%D6K" title="十分K" action="listen">十分K</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6" href="http://music.sogou.com/singer/47/detailSinger_%C1%BA%DE%C8%C2%D7%20%B7%B6%D5%F1%B7%E6.html" entitle="%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6" title="梁奕伦 范振锋" target=_blank uigs="consume=music_singer&music_singer=29&s=%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6&t=%CA%AE%B7%D6K">梁奕伦 范振锋</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/47/detailAlbum_%C1%BA%DE%C8%C2%D7%20%B7%B6%D5%F1%B7%E6!!double.r.html" entitle="double.r" title="double.r" target=_blank uigs="consume=music_album&music_album=29&s=%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6&t=%CA%AE%B7%D6K" >double.r</a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=1ED094CF9619C3E2&gid=198c17d5390184d3&s=%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6&t=%CA%AE%B7%D6K&lid=7925ce25a22e8f51&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_28',0);uigsPB('consume=music_listen&music_listen=29&s=%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6&t=%CA%AE%B7%D6K');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=1ED094CF9619C3E2&gid=198c17d5390184d3&s=%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6&t=%CA%AE%B7%D6K&lid=7925ce25a22e8f51&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_28',1);uigsPB('consume=music_listen_append&music_listen=29&s=%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6&t=%CA%AE%B7%D6K');append('songtip_28');return(false);">添加</a></span><span class="addtip" id="songtip_28" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=1ED094CF9619C3E2&globalId=198c17d5390184d3&query=%CA%AE%B7%D6K&tgid=6b081f3d0c65116d&pf=mp3&s=%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6&t=%CA%AE%B7%D6K&size=4369728&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=29&s=%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6&t=%CA%AE%B7%D6K');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%CA%AE%B7%D6K%20%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6&lyricId=7925ce25a22e8f51" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=29&s=%C1%BA%DE%C8%C2%D7+%B7%B6%D5%F1%B7%E6&t=%CA%AE%B7%D6K" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>4.17M<!--size:4.17M--></td>
+	<td>mp3</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_28" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>够绝情&nbsp;我都赶我自己<font style="color:red;text-decoration:underline;">出去</font>&nbsp;&nbsp;合:o拿!喊湿几个枕头&nbsp;劈多几罐啤酒&nbsp;这伤口&nbsp;&nbsp;怎么会有&nbsp;感觉到颤抖&nbsp...都也不肯<font style="color:red;text-decoration:underline;">走</font>&nbsp;&nbsp;范:或有数百个告别理由&nbsp;却没法可放手&nbsp;&nbsp;  或其实我未曾受够&nbsp;若惩罚我请快下手&nbsp;&nbsp;合:十分K&nbsp;来...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+<!--m--><tr id="musicmc_29">
+	<td  class="cbbox"><label><input id="checkboxmc_29" type="checkbox" name="batchlistenm" section="bl" t="%BE%CD%D5%E2%D1%F9" s="%BB%C6%BA%D7%CF%E8" gid="1c42ed983c61e2d8" cid="117832FF49EE98B6" lyricid="75da92289dcfab0a" lyricoffset="0.0" onclick="_s_ld()" uigs="music_checkbox_30" />30</label></td>
+	<td class="songname"><a href="javascript:void(null);" onClick="o2('cid=117832FF49EE98B6&gid=1c42ed983c61e2d8&s=%BB%C6%BA%D7%CF%E8&t=%BE%CD%D5%E2%D1%F9&lid=75da92289dcfab0a&lyricoffset=0.0&ac=0&from=search&pp=txt','checkboxmc_29',0);uigsPB('consume=music_song&music_song=30&s=%BB%C6%BA%D7%CF%E8&t=%BE%CD%D5%E2%D1%F9');return(false);" entitle="%BE%CD%D5%E2%D1%F9" title="就这样" action="listen">就这样</a><span class="tag"></span>
+
+</td>
+	<td class="singger"><a showSinger=t singer="%BB%C6%BA%D7%CF%E8" href="http://music.sogou.com/singer/ee/detailSinger_%BB%C6%BA%D7%CF%E8.html" entitle="%BB%C6%BA%D7%CF%E8" title="黄鹤翔" target=_blank uigs="consume=music_singer&music_singer=30&s=%BB%C6%BA%D7%CF%E8&t=%BE%CD%D5%E2%D1%F9">黄鹤翔</a>&nbsp;</td>
+	<td class="singger"><a href="http://music.sogou.com/singer/ee/detailAlbum_%BB%C6%BA%D7%CF%E8!!%D3%C2%B8%D2.html" entitle="%D3%C2%B8%D2" title="勇敢" target=_blank uigs="consume=music_album&music_album=30&s=%BB%C6%BA%D7%CF%E8&t=%BE%CD%D5%E2%D1%F9" ><font style="color:red;text-decoration:underline;">勇敢</font></a>&nbsp;</td>
+	<td><a href="javascript:void(null)" onClick="o2('cid=117832FF49EE98B6&gid=1c42ed983c61e2d8&s=%BB%C6%BA%D7%CF%E8&t=%BE%CD%D5%E2%D1%F9&lid=75da92289dcfab0a&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_29',0);uigsPB('consume=music_listen&music_listen=30&s=%BB%C6%BA%D7%CF%E8&t=%BE%CD%D5%E2%D1%F9');return(false);" title="试听" class="play" action="listen"></a><!--listen--></td>
+	 <td><div style="position:relative">
+<span class="cd2">
+<a href="javascript:void(null)" class="add" onclick="o2('cid=117832FF49EE98B6&gid=1c42ed983c61e2d8&s=%BB%C6%BA%D7%CF%E8&t=%BE%CD%D5%E2%D1%F9&lid=75da92289dcfab0a&lyricoffset=0.0&ac=0&from=search&pp=bnt','checkboxmc_29',1);uigsPB('consume=music_listen_append&music_listen=30&s=%BB%C6%BA%D7%CF%E8&t=%BE%CD%D5%E2%D1%F9');append('songtip_29');return(false);">添加</a></span><span class="addtip" id="songtip_29" style="display:none">歌曲已添加到播放列表</span></div></td>
+	<td><span class="cd3"><a href="javascript:void(null);" onclick="window.open('/down.so?gid=117832FF49EE98B6&globalId=1c42ed983c61e2d8&query=%BE%CD%D5%E2%D1%F9&tgid=66204abebee00463&pf=mp3&s=%BB%C6%BA%D7%CF%E8&t=%BE%CD%D5%E2%D1%F9&size=4129819&ac=0&c','','width=431,height=495,scrollbars=no');uigsPB('consume=music_down&music_down=30&s=%BB%C6%BA%D7%CF%E8&t=%BE%CD%D5%E2%D1%F9');return(false);" class="link" action="down" title="链接"></a></span></td>
+	<td>
+	
+	<span class="cd4">
+	<a href="/lyric.so?query=%BE%CD%D5%E2%D1%F9%20%BB%C6%BA%D7%CF%E8&lyricId=75da92289dcfab0a" target=_blank class="lyrics" uigs="consume=music_lyric&music_lyric=30&s=%BB%C6%BA%D7%CF%E8&t=%BE%CD%D5%E2%D1%F9" title="歌词"></a>
+	</span>
+	
+	</td>
+	<td nowrap>3.94M<!--size:3.94M--></td>
+	<td>mp3</td>
+	<td><div class="spd"><span class="spdbar6"></span></div></td>
+</tr><!--n-->
+
+	<tr id="lyricmc_29" class="lyricsbox" ><td class="cbbox">&nbsp;</td><td colspan=3>爱吧爱吧自然的鲜花开吧&nbsp;&nbsp;就这样爱吧爱吧自然的鲜花开吧&nbsp;&nbsp;不再想了今天天气真好空气之中少了些伤感&nbsp;&nbsp;我要上班生活挣钱回家&nbsp;&nbsp;吃过饭<font style="color:red;text-decoration:underline;">出去</font>转转找些朋友随便侃侃&nbsp;&nbsp;到周末踢踢球再到disco出身汗&nbsp;&nbsp;失恋永远流行难道说不是吗&nbsp;&nbsp;<font style="color:red;text-decoration:underline;">走</font>在街上满眼是爱情都在找...</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+
+</table>
+<!--connection_state:true-->
+<!--批量播放按钮-->
+<!--[if lte IE 6]>
+<script type="text/javascript">
+var sfEls = document.getElementById("songlist").getElementsByTagName("TR");
+for (var i=0; i<sfEls.length; i++) {
+	sfEls[i].onmouseover=function() {
+		this.className+=" sfhover";
+	}
+	sfEls[i].onmouseout=function() {
+		this.className=this.className.replace(new RegExp(" sfhover\\b"), "");
+	}
+}
+</script><![endif]-->
+
+<ul class="btnarea">
+<li class="selectall"><label for="selectallcheckbox"><input id="selectallcheckbox" type="checkbox" onclick="selectall(this)"> 全选</label></li>
+<li id=listen_selected class="disbtn2"><a id=listen_selecteda >选中播放</a></li>
+<!--[if IE]>
+<li id=download_selected class="disbtn3"><a id=download_selecteda class="btn3l">选中下载</a><a class="btn3r" id="download_lyrica">&nbsp;</a>
+	<div id=download_lyric class="btnpop1" style="display:none" onmouseover="_o_lyric(true)" onmouseout="_o_lyric(false)">
+	<label><input id="isdownloadlyric" name="isdownloadlyric" type="checkbox" style="vertical-align:middle" uigs="music_lyric_checkbox">同步下歌词</label>
+	</div>
+	<div id="no_thunder"></div>
+</li>
+<![endif]-->
+</ul>
+
+<form method="post" target="bdown" action="/coo/common/batchdown_result.jsp" id=bdownform name=bdownform>
+<input type=hidden id="bdownquery" name="query" value="marshal" />
+<input type=hidden id="param" name="param" />
+</form>
+<iframe width=0 height=0 id="bdown" name="bdown" style="display:none;"></iframe>
+
+<!--页码-->
+<div class="p">
+
+&nbsp;
+&nbsp;&nbsp;<strong>1</strong>&nbsp;&nbsp;
+<a href=?pf=&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&page=2 uigs="music_page_2"  onclick="dealinterv(this)">2</a>
+<a href=?pf=&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&page=3 uigs="music_page_3"  onclick="dealinterv(this)">3</a>
+<a href=?pf=&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&page=4 uigs="music_page_4"  onclick="dealinterv(this)">4</a>
+<a href=?pf=&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&page=2 uigs="music_page_down" class="np" onclick="dealinterv(this)" >下一页&gt;</a>
+
+
+</div>
+<script>
+function highlight(id){
+	if(typeof(id)!="undefined"){
+		if(navigator.userAgent.indexOf("MSIE")==-1){
+			var musicmc=document.getElementById("musicmc_"+id);
+			var lyricmc=document.getElementById("lyricmc_"+id);
+			if(musicmc) musicmc.className="boxhl";
+	                if(lyricmc) lyricmc.className="lyricsbox boxhl";
+		}else{
+			var checkboxmc=document.getElementById("checkboxmc_"+id);
+			if(!checkboxmc.checked){
+				var musicmc=document.getElementById("musicmc_"+id);
+				var lyricmc=document.getElementById("lyricmc_"+id);
+				if(musicmc) musicmc.className="boxhl";
+	                        if(lyricmc) lyricmc.className="lyricsbox boxhl";
+			}
+		}       
+	}
+}
+function nohighlight(id){
+	if(typeof(id)!="undefined"){
+		if(navigator.userAgent.indexOf("MSIE")==-1){
+			var musicmc=document.getElementById("musicmc_"+id);
+			var lyricmc=document.getElementById("lyricmc_"+id);
+			if(musicmc) musicmc.className="";
+			if(lyricmc) lyricmc.className="lyricsbox";
+		}else{
+			var checkboxmc=document.getElementById("checkboxmc_"+id);
+			if(!checkboxmc.checked){
+				var musicmc=document.getElementById("musicmc_"+id);
+				var lyricmc=document.getElementById("lyricmc_"+id);
+				if(musicmc) musicmc.className="";
+				if(lyricmc) lyricmc.className="lyricsbox";
+			}
+		}       
+	}	
+
+}
+var sfEls = document.getElementById("songlist").getElementsByTagName("tr");
+for (var i=0; i<sfEls.length; i++) {
+	sfEls[i].onmouseover=function (){
+		if(this.id){
+			var iid=this.id.split("_")[1];
+			var checkboxmc=document.getElementById("checkboxmc_"+iid);
+			if(!checkboxmc.checked){
+				var musicmc=document.getElementById("musicmc_"+iid);
+				var lyricmc=document.getElementById("lyricmc_"+iid);
+				if(musicmc) musicmc.className="boxhl";
+	                        if(lyricmc) lyricmc.className="lyricsbox boxhl";
+			}	
+		}
+	};
+	sfEls[i].onmouseout=function(){
+		if(this.id){
+                        var iid=this.id.split("_")[1];
+                       	var checkboxmc=document.getElementById("checkboxmc_"+iid);
+	                if(!checkboxmc.checked){
+	                     var musicmc=document.getElementById("musicmc_"+iid);
+	                     var lyricmc=document.getElementById("lyricmc_"+iid);
+        	             if(musicmc) musicmc.className="";
+                             if(lyricmc) lyricmc.className="lyricsbox";
+                      	}
+                }	
+	};
+}
+function _s_ld(){
+	var carray=document.getElementsByName("batchlistenm");
+	var cnum=false;
+	for(var i=0;i<carray.length;i++){
+		if(carray[i].checked) {cnum=true;break;}
+	}
+	ablebatchfunc(cnum);
+}
+function _o_lyric(open){
+	var downloadlyric=document.getElementById("download_lyric");
+	if(open) downloadlyric.style.display="";
+	else downloadlyric.style.display="none";
+}
+//批量下载功能开关
+function ablebatchfunc(able){
+	var listenselected = document.getElementById("listen_selected");
+	var listenselecteda = document.getElementById("listen_selecteda");
+	var downloadselected = document.getElementById("download_selected");
+	var downloadselecteda = document.getElementById("download_selecteda");
+	var downloadlyrica = document.getElementById("download_lyrica");
+	if(able){
+		listenselecteda.setAttribute("href","javascript:void(0);");
+		listenselecteda.onclick=function(){playselectedProxy();uigsPB('music_selected_listen&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&consume=music_selected_listen');};
+		listenselected.className="btn2";
+
+		if (downloadselected && downloadselecteda && downloadlyrica) {
+			downloadselecteda.setAttribute("href","javascript:void(0);");
+			downloadselecteda.onclick=function(){downselected();uigsPB('music_selected_down&query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5&consume=music_selected_down');}
+			downloadlyrica.setAttribute("href","javascript:void(0);");
+			downloadlyrica.onmouseover=function(){_o_lyric(true);}
+			downloadlyrica.onmouseout=function(){_o_lyric(false);}
+			downloadselected.className="btn3";
+		}
+	}
+	else {
+		listenselecteda.removeAttribute("href");
+		listenselecteda.onclick=null;
+		listenselected.className="disbtn2";
+
+		if (downloadselected && downloadselecteda && downloadlyrica) {
+			downloadselecteda.removeAttribute("href");
+			downloadselecteda.onclick=null;
+			downloadlyrica.removeAttribute("href");
+			downloadlyrica.onmouseover=null;
+			downloadlyrica.onmouseout=null;
+			downloadselected.className="disbtn3";
+		}
+	}
+}
+//全选功能按钮
+function selectall(checkbox){
+	var check=checkbox.checked;
+	for(var i=0;i<30;i++){
+		var checkboxmc=document.getElementById("checkboxmc_"+i);
+		if(checkboxmc){
+			if(check){
+				highlight(i);
+				checkboxmc.checked=true;
+				ablebatchfunc(true);
+			}else{
+				checkboxmc.checked=false;
+				nohighlight(i);
+				ablebatchfunc(false);
+			}
+		}
+	}
+}
+function playselectedProxy() {
+	if (openNewListen()) {
+		var ids = [];
+		for(var i=0;i<30;i++){
+			var key="checkboxmc_"+i;
+			var checkboxmc=document.getElementById(key);
+			if (checkboxmc&&checkboxmc.checked) ids.push(key);
+		}
+		openMusicBox(ids, 0);
+	} else {
+		playselected();
+	}
+}
+</script>
+
+
+		
+		<!-- 相关搜索-->
+
+<h2 class="title2">相关搜索:</h2>
+<table class="etcquery"><tbody>
+<tr><td><a uigs="music_hint_1" href='/music.so?query=%D3%C2%B8%D2%D7%DF%B3%F6%C8%A5+%D4%DE%C3%C0%D6%AE%C8%AA&w=02020800&sourcetype=hint_1'>勇敢走出去 赞美之泉</a></td><td><a uigs="music_hint_2" href='/music.so?query=%D3%C2%B8%D2%B5%C4%D0%C4&w=02020800&sourcetype=hint_2'>勇敢的心</a></td><td><a uigs="music_hint_3" href='/music.so?query=%B2%BB%B9%BB%D3%C2%B8%D2&w=02020800&sourcetype=hint_3'>不够勇敢</a></td></tr><tr>
+<td><a uigs="music_hint_4" href='/music.so?query=%BF%C9%B2%BB%BF%C9%D2%D4%B2%BB%D3%C2%B8%D2&w=02020800&sourcetype=hint_4'>可不可以不勇敢</a></td><td><a uigs="music_hint_5" href='/music.so?query=%D3%C2%B8%D2%B5%C4%D0%C4+%CD%F4%B7%E5&w=02020800&sourcetype=hint_5'>勇敢的心 汪峰</a></td><td><a uigs="music_hint_6" href='/music.so?query=%D3%C2%B8%D2+%D5%C5%BB%DD%C3%C3&w=02020800&sourcetype=hint_6'>勇敢 张惠妹</a></td></tr><tr>
+<td><a uigs="music_hint_7" href='/music.so?query=%D3%C2%B8%D2%B0%AE&w=02020800&sourcetype=hint_7'>勇敢爱</a></td><td><a uigs="music_hint_8" href='/music.so?query=%D3%C2%B8%D2+by2&w=02020800&sourcetype=hint_8'>勇敢 by2</a></td><td><a uigs="music_hint_9" href='/music.so?query=%D6%BB%C4%DC%D3%C2%B8%D2&w=02020800&sourcetype=hint_9'>只能勇敢</a></td></tr>
+<tbody></table>
+<!--hints:勇敢走出去 赞美之泉$$##勇敢的心$$##不够勇敢$$##可不可以不勇敢$$##勇敢的心 汪峰$$##勇敢 张惠妹$$##勇敢爱$$##勇敢 by2$$##只能勇敢-->
+
+
+
+<!--相关视频-->
+
+
+
+
+
+<!--热门榜单-->
+<h2 class="title2">热门榜单：</h2>
+<ul class="hotboard" w="02023002">
+          <li>排 行 榜：<a href="http://music.sogou.com/song/newtop_1.html" target="_blank">新歌TOP100</a><a href="http://music.sogou.com/song/topsong_1.html" target="_blank">歌曲TOP100</a><a href="http://music.sogou.com/song/newnew_1.html" target="_blank">新单曲抢先听</a><a href="http://music.sogou.com/song/newdj_1.html" target="_blank">劲爆DJ音乐</a><a href="http://music.sogou.com/song/enpop_1.html" target="_blank">欧美流行</a><a href="http://music.sogou.com/song/jkpop_1.html" target="_blank">日韩流行</a></li>
+          <li>歌曲分类：<a href="http://mp3.sogou.com/tag.so?query=%u52B2%u821E%u56E2" target="_blank">劲舞团</a><a href="http://mp3.sogou.com/tag.so?query=%B7%C7%D6%F7%C1%F7" target="_blank">非主流</a><a href="http://mp3.sogou.com/tag.so?query=%BE%AD%B5%E4%C0%CF%B8%E8" target="_blank">经典老歌</a><a href="http://mp3.sogou.com/tag.so?query=%D3%B0%CA%D3%BD%F0%C7%FA" target="_blank">影视金曲</a><a href="http://mp3.sogou.com/tag.so?query=%C7%E9%B8%E8%B6%D4%B3%AA" target="_blank">情歌对唱</a><a href="http://mp3.sogou.com/tag.so?query=%B3%C9%C3%FB%C7%FA" target="_blank">成名曲</a><a href="http://mp3.sogou.com/tag.so?query=%C5%B7%C3%C0%BE%AD%B5%E4" target="_blank">欧美经典</a><a href="http://mp3.sogou.com/tag.so?query=%u4E2D%u56FD%u98CE" target="_blank">中国风</a><a href="http://mp3.sogou.com/tag.so?query=%u563B%u54C8" target="_blank">嘻哈</a></li>
+          <li>音乐专题：<a href="http://music.sogou.com/topic/kuainan.html" target="_blank">2010快乐男声专题</a><a href="http://music.sogou.com/topic/worldcup.html" target="_blank">历届世界杯音乐专题</a><a href="http://music.sogou.com/topic/fzl.html" target="_blank">非主流</a><a href="http://music.sogou.com/topic/womensday.html" target="_blank">经典女人歌曲</a><a href="http://music.sogou.com/topic/marry.html" target="_blank">婚礼进行曲</a></li>
+        </ul>
+
+	</div>
+<!--advertisement-->
+<table sfc="t" class="banner" style="*margin-top:0">
+<tbody>
+<tr>
+	<td width="790"><div align="left" height="100" width="760" id="sogouFrag_2"></div></td>
+	<td height="100"><div class="adlink" id="sogouFrag_1"></div></td>
+</tr>
+</tbody>
+</table>
+
+<!--bottom search-->
+<div class="foot">
+	<form id="searchForm2" name="searchForm2" action="music.so" method="get" onsubmit="dde_dispatch('2');return true;">
+      <div class="qborder">
+	<input type="text" size="32" class="query" name="query" autocomplete="off" maxlength="100" value="勇敢走出去"/>
+      </div>
+      <input type="submit" value="搜狗搜索" class="sbtn1" onmousedown="this.className='btnactive'" onmouseup="this.className='sbtn1'" onmouseout="this.className='sbtn1'">
+      <div class="radiobox">
+	<input type="radio" onclick='selectRadio("all","","2")' id="rd_music2" checked="" value="1" name="class2" checked uigs="result_bradio_all"/>
+	<label for="rd_music2">全部音乐</label>
+	<input type="radio" onclick='selectRadio("pf","mp3","2")' id="rd_musicMp32" value="1" name="class2"  uigs="result_bradio_mp3"/>
+	<label for="rd_musicMp32">mp3</label>
+	<input type="radio" onclick='selectRadio("pf","wma","2")' id="rd_musicWma2" value="1" name="class2"  uigs="result_bradio_wma"/>
+	<label for="rd_musicWma2">wma</label>
+	<input type="radio" onclick='selectRadio("pf","rm","2")' id="rd_musicRm2" value="1" name="class2"   uigs="result_bradio_rm"/>
+	<label for="rd_musicRm2">rm</label>
+	<input type="radio" onclick='selectRadio("album","","2")' id="rd_album2" value="2" name="class2"  uigs="result_bradio_album"/>
+	<label for="rd_album2">专辑</label>
+	<input type="radio" onclick='selectRadio("","","2")' id="rd_geci2" value="3" name="class2"  uigs="result_bradio_lyric"/>
+	<label for="rd_geci2">歌词</label>
+	<input type=hidden name="st" id="st" value="">
+	<input type=hidden name="ac" id="ac" value="1">
+	<input type=hidden name="pf" id="pf" value="">
+	<input type=hidden name="_asf" id="_asf">
+	<input type=hidden name="_ast" id="_ast">
+	<input type=hidden name="p" id="p">
+
+      </div>
+    </form>
+</div>
+<!-- end wrapper-->
+
+</div>
+<div id="duty" style="align:center">以上搜索结果均系通过搜索引擎技术从第三方网站自动搜录所得，概与我公司无关。根据有关法律法规和政策，部分搜索结果可能未予显示，请点击<a href="http://mp3.sogou.com/duty.html" target="_blank" uigs="result_duty">这里</a>查看</div>
+<div class="cr">
+<!--[if IE]><a href="javascript:void(null);" onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://mp3.sogou.com');uigsPB('result_fav');">设为首页</a> | <![endif]-->
+<a href="http://help.sogou.com/music.html" target="_blank" uigs="result_help">搜索帮助</a> | <a target="_blank" href="http://www.sogou.com/feedback/?product=%CB%D1%B9%B7%D2%F4%C0%D6%CB%D1%CB%F7" uigs="result_not_satisfied"> 对结果不满意?</a> &copy; <script>document.write(new Date().getFullYear())</script> SOGOU.COM <a class="g" target="_blank" href="http://www.sogou.com/docs/terms.htm" uigs="result_terms">免责声明</a>
+</div>
+
+	
+</body>
+</html>
+<script src="/js/common/cookie.js" language="javascript" type="text/javascript"></script>
+<script src="/js/app/music_ad.js?v=2" language="javascript" type="text/javascript"></script>
+<script>
+var SCREEN_WIDTH=1200;
+function resizecolumn(){
+var outerbody=document.getElementById('outerbody');
+var obj=(document.compatMode&&document.compatMode!="BackCompat")?document.documentElement:document.body;
+//if(!outerbody||!obj) return;
+if(obj.clientWidth<=SCREEN_WIDTH){
+	outerbody.className += " s1024";
+}else{
+	if(outerbody.className.indexOf("hideside")==-1){
+		outerbody.className="";
+	}else{
+		outerbody.className="hideside";
+	}
+}
+}
+
+resizecolumn();
+window.onresize=resizecolumn;
+</script>
+
+<script>
+//showAD([1,2]);
+
+showAD_lunbo([1,2],function(){
+	document.getElementById('lunbo_sogouFrag_1').style.display='block';
+	document.getElementById('lunbo_sogouFrag_2').style.display='block';
+});
+
+</script>
+<script>
+function switchcol(){
+	var outer = document.getElementById('outerbody');
+	if(outer.className.indexOf("hideside")==-1){
+		outer.className+=" hideside";
+		setCookie("columnnum","2",1000 * 60 * 60 * 24 * 365 * 10,"/","sogou.com",null);
+		uigsPB("type=closecolumn");
+	}else{
+		outer.className="";
+		resizecolumn();
+		deleteCookie("columnnum","","sogou.com");
+		uigsPB("type=opencolumn");
+	}
+}
+
+	//获取用户UA
+	var ua = navigator.userAgent.toLowerCase();  
+	var s,browser;  
+	(s = ua.match(/msie ([\d.]+)/)) ? browser = s[0] :  
+	(s = ua.match(/firefox\/([\d.]+)/)) ? browser = s[0] :  
+	(s = ua.match(/chrome\/([\d.]+)/)) ? browser = s[0]  :  
+	(s = ua.match(/opera.([\d.]+)/)) ? browser = s[0] :  
+	(s = ua.match(/version\/([\d.]+).*safari/)) ? browser = s[0] : 0;
+	
+	var pf ="";
+	var page = 1;
+	var resultcnt="114";
+	var ctime = 18;
+        var qcnum = 0;
+	var hintnum = 10;
+	var showQcHTML = "false";
+	var qcHtml = "";
+	var inttab = "61_0-39_1-43_2-41_3-40_4-23_5-28_6-18_7-9_8-29_9-30_10-45_11-62_12-";
+	var selftab = "false";
+
+	//初始化pingback参数
+	window.uigs_para = new Array();
+	window.uigs_para["uigs_productid"]="music";
+	window.uigs_para["uigs_page"]="music";
+	window.uigs_para["intcat"]="music";
+	window.uigs_para["inttab"]=inttab;
+	window.uigs_para["selftab"]=selftab;
+	window.uigs_para["query"] = enQuery;
+        window.uigs_para["pf"] = pf;
+        window.uigs_para["page"] = page;
+        window.uigs_para["resultcnt"] = resultcnt;
+        window.uigs_para["ctime"] = ctime;
+        window.uigs_para["qcnum"] = qcnum;
+        window.uigs_para["hintnum"] = hintnum;
+        window.uigs_para["browser"] = browser;
+	if(typeof(marshal)!="undefined"&&marshal!="")
+	{
+		window.uigs_para["noresult"] = marshal;
+	}
+	if(typeof(originalq)!="undefined"&&originalq!="")
+	{
+		window.uigs_para["originalq"] = originalq;
+	}
+	if(typeof(blacklisth)!="undefined"&&blacklisth!=""){
+		window.uigs_para["blacklisth"]=blacklisth;
+	}
+</script>
+<script src="/js/musicSo_3.0.js?v=1" language="javascript" type="text/javascript"></script>
+<script src="/js/sugg_ajaj.v.4.4.js?v=3" language="javascript" type="text/javascript"></script>
+<script src="http://pb.sogou.com/pb.js" language="javascript" type="text/javascript"></script>
+<script>var spv;if(!spv)m_s();spv=1;</script>
+
+
+
+
+
+<!--uuid:1352472628592388--><!--rn:10.14.6.121:6802--><!--ch:11@cache12.music.djt:58001--><!--zly-->
