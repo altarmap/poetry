@@ -16,7 +16,7 @@ class GoogleAPI implements IAPI {
 	protected $_tmpResultXML = null;
 	protected $_exportResult = null;	
 	protected $_currentItem= 0;
-	public $limit = 5;
+	public $limit = 10;
 	public function setSearch ( $searchObj ) {
 		$this-> _searchObj = $searchObj;
 	}
@@ -43,24 +43,24 @@ class GoogleAPI implements IAPI {
 		return self::METHOD;
 	}
 	public function export() {
-		$count = count($this-> _storageResult);
+		$count = count($this-> _storageResult);		
 		$this-> _exportXML = new SimpleXMLElement('<root></root>');
-		//echo $this-> _tmpResultXML-> asXML();
+		//echo $this-> _tmpResultXML-> asXML();			
 		for( $i =0; $i < $count; $i += 1) {
-			$items = $this-> _storageResult[$i]-> responseData -> results -> item;
-			$itemCount= count($items);
-			for($in= 0; $in< $itemCount; $in+= 1){
-				$itemNode= $this-> _exportXML -> addChild('item');
-				$itemNode -> addChild('url', rawurldecode($items[$in] -> url));
-				$itemNode -> addChild('visibleUrl', rawurldecode($items[$in] -> visibleUrl));	
-				$itemNode -> addChild('cacheUrl', rawurldecode($items[$in] -> cacheUrl));
+			$item = $this-> _storageResult[$i]-> responseData -> results -> item;
+			$itemCount = count($item);
+			for ($in = 0; $in < $itemCount; $in += 1) {
+				$itemNode = $this-> _exportXML -> addChild('item');
+				$itemNode -> addChild('url', rawurldecode($item[$in] -> url));
+				$itemNode -> addChild('visibleUrl', rawurldecode($item[$in] -> visibleUrl));	
+				$itemNode -> addChild('cacheUrl', rawurldecode($item[$in] -> cacheUrl));
 			}
-		}
+		}				
 		return $this-> _exportXML;		
 	}
 	protected function _convert2XML ( $result = "") {
 		$this-> _tmpResultXMLString = '<?xml version="1.0"?><root>';
-		$collection = json_decode($result, true);  //after decode, get collection array dataType from jason format
+		$collection = json_decode($result, true);
 		$this-> _json2XML($collection);
 		$this-> _tmpResultXMLString .= '</root>';	
 		return new SimpleXMLElement($this-> _tmpResultXMLString);
