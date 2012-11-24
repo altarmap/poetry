@@ -2,6 +2,7 @@
 class FileManager {
 	protected static $REPO;
 	protected static $HEAD_PATH;
+	protected static $SOURCE_PATH;
 	protected $_api = null;
 	protected $_resultSha1;
 	protected $_resultXML;
@@ -11,7 +12,8 @@ class FileManager {
 	protected $_keywordXML;	
 	public function __construct($api = null){
 		self :: $REPO = dirname(__FILE__) . "\\repo";
-		self :: $HEAD_PATH = self :: $REPO . "\\head";	
+		self :: $HEAD_PATH = self :: $REPO . "\\head";
+		self :: $SOURCE_PATH = dirname(__FILE__) . "\\source_code";
 		try {
 			if ( $api != null) {
 				if($api instanceof IAPI) {  //判別類別間繼承關係之用
@@ -53,8 +55,8 @@ class FileManager {
 		} else {
 			$this-> _resultSha1 = $this-> getSha1($result);
 		}		
-		$folderName = self :: $REPO . "\\" . substr($this-> _resultSha1, 0, 2);
-		$file_name = substr($this-> _resultSha1, 2) . ".xml";
+		$folderName = self :: $REPO . "\\" . $this-> getDirNameBySha1($this-> _resultSha1);
+		$file_name = $this-> getFileNameBySha1($this-> _resultSha1) . ".xml";
 		if($this-> _createFolder($folderName)) {
 			$this-> _resultXML-> asXML( $folderName . "\\". $file_name );
 		}	
@@ -68,8 +70,8 @@ class FileManager {
 			$searchInfoXML-> addChild("previousID");
 		}
 		$this-> _searchInfoSha1 = $this-> getSha1($searchInfoXML-> asXML());
-		$folderName = self :: $REPO . "\\" . substr($this-> _searchInfoSha1, 0, 2);
-		$file_name = substr($this-> _searchInfoSha1, 2) . ".xml";
+		$folderName = self :: $REPO . "\\" . $this-> getDirNameBySha1($this-> _searchInfoSha1);
+		$file_name = $this-> getFileNameBySha1($this-> _searchInfoSha1) . ".xml";
 		if($this-> _createFolder($folderName)) {
 			$searchInfoXML-> asXML( $folderName . "\\". $file_name );
 		}
@@ -78,18 +80,33 @@ class FileManager {
 		$this-> _keywordXML = new SimpleXMLElement('<root></root>');
 		$this-> _keywordXML-> addChild("searchID", $searchInfoSha1);		
 		$this-> _keywordSha1 = $this-> getSha1($this-> _api-> getKeyword());		
-		$folderName = self :: $HEAD_PATH . "\\" . substr($this-> _keywordSha1, 0, 2);
-		$file_name = substr($this-> _keywordSha1, 2) . ".xml";
+		$folderName = self :: $HEAD_PATH . "\\" . $this-> getDirNameBySha1($this-> _keywordSha1);
+		$file_name = $this-> getFileNameBySha1($this-> _keywordSha1) . ".xml";
 		if($this-> _createFolder($folderName)) {
 			$this-> _keywordXML-> asXML( $folderName . "\\". $file_name ); 
 		}	
+	}
+	public function getRepoPath() {
+		return self::$REPO;
+	}
+	public function getHeadPath() {
+		return self::$HEAD_PATH;
+	}
+	public function getSourcePath() {
+		return self::$SOURCE_PATH;
+	}
+	public function getDirNameBySha1 ($sha1) {
+		return substr($sha1, 0, 2);
+	}
+	public function getFileNameBySha1 ($sha1) {
+		return substr($sha1, 2);
 	}
 	public function getSha1 ($content) {
 		return sha1($content);
 	}
 	public function getXML ($sha1) {
-		$folderName= self::$REPO . "\\" . substr($sha1, 0, 2);
-		$file_name= substr($sha1, 2) . ".xml";
+		$folderName= self::$REPO . "\\" . $this-> getDirNameBySha1($sha1);
+		$file_name= $this-> getFileNameBySha1($sha1) . ".xml";
 		if( file_exists( $folderName . "\\". $file_name) ) {
 			return simplexml_load_file($folderName . "\\". $file_name);
 		} else {
@@ -97,8 +114,8 @@ class FileManager {
 		}
 	}
 	public function getHeadXML ($sha1) {		
-		$folderName = self :: $HEAD_PATH . "\\" . substr($sha1, 0, 2);	
-		$file_name = substr($sha1, 2) . ".xml";
+		$folderName = self :: $HEAD_PATH . "\\" . $this-> getDirNameBySha1($sha1);	
+		$file_name = $this-> getFileNameBySha1($sha1) . ".xml";
 		if( file_exists( $folderName . "\\". $file_name) ) {
 			return simplexml_load_file( $folderName . "\\". $file_name );
 		} else {
