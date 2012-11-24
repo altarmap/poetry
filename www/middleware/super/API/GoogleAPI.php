@@ -3,11 +3,17 @@ require_once(dirname(__FILE__) . "/IAPI.php");
 class GoogleAPI implements IAPI {
 	const URL = "http://ajax.googleapis.com/ajax/services/search/web";
 	const METHOD = "GET";
+	protected $_keyword = "";
 	protected $_params = array(
 		"rsz" => "large",
 		"v" => "2.0",
 		"start" => 0,
 		"q" => ""
+	);
+	protected $_countryCode = 'TW';
+	protected $_presetKeyword = array(
+		'TW' => '詩歌 歌詞',
+		'US' => 'poetry lyrics'
 	);
 	protected $_searchObj = null;
 	protected $_storageResult = array();
@@ -16,7 +22,13 @@ class GoogleAPI implements IAPI {
 	protected $_tmpResultXML = null;
 	protected $_exportResult = null;	
 	protected $_currentItem= 0;
-	public $limit = 10;
+	public $limit = 5;
+	public function setCountryCode ($code) {
+		$this-> _countryCode = $code;
+	}
+	public function getCountryCode () {
+		return $this-> _countryCode;
+	}
 	public function setSearch ( $searchObj ) {
 		$this-> _searchObj = $searchObj;
 	}
@@ -28,10 +40,11 @@ class GoogleAPI implements IAPI {
 		}
 	}
 	public function setKeyword( $keyword = "" ) {
-		$this-> _params["q"] = $keyword;
+		$this-> _keyword = $keyword;
+		$this-> _params["q"] = $keyword . ' ' . $this-> _presetKeyword[$this-> _countryCode];
 	}
 	public function getKeyword () {
-		return $this-> _params["q"];
+		return $this-> _keyword;
 	}
 	public function getParams (){
 		return $this-> _params;
