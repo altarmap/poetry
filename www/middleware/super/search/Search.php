@@ -8,7 +8,7 @@ class Search implements ISearch {
 	protected $_api = null;
 	protected $_cursor = 0;
 	//protected $_url = "";
-	protected $_limit = 20;//default
+	protected $_limit = 5;//default
 	public function __construct ( $keyword = "" ) {
 		$this-> setKeyword($keyword);
 	}
@@ -24,11 +24,11 @@ class Search implements ISearch {
 			default:
 				$type = ErrorMessages::TYPE_INVALID;
 				$msg = ErrorMessages::getErrorMsg ( $type );
-				$code = ErrorMessages::getErrorCode( $type );				
+				$code = ErrorMessages::getErrorCode( $type );
 				throw new Exception($msg . " = " . $keyword, $code);
 				break;
 			}
-		} catch(Exception $e) {			
+		} catch(Exception $e) {
 			throw $e;
 		}
 	}
@@ -41,7 +41,7 @@ class Search implements ISearch {
 				$type = ErrorMessages::API_INAVAILABLE;
 				$msg = ErrorMessages::getErrorMsg ( $type );
 				$code = ErrorMessages::getErrorCode( $type );
-				throw Exception( $msg, $code);
+				throw new Exception( $msg, $code);
 			}
 		} catch ( Exception $e ) {
 			throw $e;
@@ -59,9 +59,9 @@ class Search implements ISearch {
 			while( $updateTime != $DestinationTime){
 				$now = new DateTime();
 				$updateTime = $now-> format("U");
-			}			
+			}
 			//echo 'search: ' . $currentTime . '======================================<br>';
-			$this-> _api-> setKeyword(urlencode($this-> _keyword));
+			$this-> _api-> setKeyword($this-> _keyword);
 			$method = strtoupper($this->_api-> getMethod());
 			switch ( $method ) {
 			case "GET":
@@ -69,8 +69,8 @@ class Search implements ISearch {
 				$params = array();
 				foreach ($this-> _api-> getParams() as $key => $value) {
 					array_push($params, $key . "=" . $value);
-				}					
-				$handle = fopen($url . "?" . implode ("&", $params), 'rb');				
+				}
+				$handle = fopen($url . "?" . implode ("&", $params), 'rb');
 				$body = "";
 				while (!feof($handle)) {
 					$body .= fread($handle, 8192);
@@ -83,7 +83,6 @@ class Search implements ISearch {
 			case "POST":
 				break;
 			}
-						
 		}
 	}
 }
