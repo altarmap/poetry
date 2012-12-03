@@ -40,7 +40,7 @@ class GoogleAPI implements IAPI {
 		}
 	}
 	public function setKeyword( $keyword = "" ) {
-		$this-> _keyword = $keyword;
+		$this-> _keyword = urlencode($keyword);
 		$this-> _params["q"] = urlencode($keyword . " " . $this-> _presetKeyword[$this-> _countryCode]);
 	}
 	public function getKeyword () {
