@@ -1,6 +1,7 @@
 <?php
 require_once("../FileManager/FileManager.php");
 require_once("../../lib/server/simplehtmldom_1_5/simple_html_dom.php");
+header("Content-Type:text/html; charset=utf-8");
 class ContentFilter {
 	protected $_remove_tag= array("iframe", "img", "comment", "input", "script", "link", "button", "style", "object", "svg", "select", "embed");
 	protected $_id_class_name= array(); 
@@ -8,6 +9,65 @@ class ContentFilter {
 	
 	function __construct(){
 		$this-> _fileManager = new FileManager();
+	}
+	private function _checkChinese ($html) {		
+		$matas = $html-> find('meta');
+		$charset = '';
+		if(count($matas) > 0) {
+			foreach($matas as $key => $value) {					
+				$fullvalue = $value -> content;
+				if($fullvalue) {
+					preg_match('/charset=(.+)/', $fullvalue, $matches);
+					if ($matches[1] != '' && $charset == '') {							
+						$charset = $matches[1];														
+					}						
+				} else {
+					if ($value -> charset != '' && $charset == '') {							
+						$charset = $value -> charset;							
+					}												
+				}					
+			}
+		}		
+		if($charset != '') {
+			$charset = strtolower($charset);
+			//echo $charset.'<br>';
+			switch($charset) {
+			case 'utf-8': case 'big5':
+				break;
+			default:
+				$html = str_get_html('');
+				break;
+			}
+		} else {
+			$charset  = $html->find('html', 0)-> lang;
+			if($charset != '') {
+				$charset = strtolower($charset);
+				switch($charset){
+				case 'zh-tw':
+					break;
+				default:
+					$html = str_get_html('');
+					break;
+				}
+			} else {
+				$html = str_get_html('');
+			}
+		}		
+		
+		/*$test1 = iconv("UTF-8", "big5//TRANSLIT", $str);
+		$test2 = iconv("UTF-8", "big5//IGNORE", $str);
+		if ($test1 == $test2) {
+		   echo 'traditional';
+		} else {
+		   $test3 = iconv("UTF-8", "gb2312//TRANSLIT", $str);
+		   $test4 = iconv("UTF-8", "gb2312//IGNORE", $str);
+		   if ($test3 == $test4) {
+			  echo 'simplified';
+		   } else {
+			  echo 'Failed to match either traditional or simplified';
+		   }
+		}*/
+		return $html;
 	}
 	public function getSourceIdByKeyword($keyword){
 		$sha1 = sha1(urlencode($keyword));
@@ -56,12 +116,11 @@ class ContentFilter {
 		}
 		return $sourceIds;
 	}
-	public function getHTML($sourceId, $content= ''){
-		//$html = str_get_html('');
+	public function getHTML($sourceId, $content= ''){		
 		if($sourceId){
 			$fileManager= $this-> _fileManager;
 			$filePath= $fileManager-> getSourcePath() . '\\' . $fileManager-> getDirNameBySha1($sourceId) . '\\' . $fileManager-> getFileNameBySha1($sourceId) . '.html';
-			$html= file_get_html($filePath);
+			$html= file_get_html($filePath);			
 			if( !$html ){
 				if( $fp= fopen($filePath, r) ){
 					while( $length= fread($fp, 8192) ){
@@ -72,8 +131,9 @@ class ContentFilter {
 				}
 			}
 		} else {
-			$html=  str_get_html($content);
-		}
+			$html= str_get_html($content);
+		}		
+		$html = $this-> _checkChinese($html);
 		return $html;
 	}
 	public function filterStrLength($domArray){
@@ -156,15 +216,27 @@ class ContentFilter {
 			foreach($sourceIds as $value){
 				switch (gettype($value)){
 				case 'string':
-					$html= $this-> getHTML($value);
+					echo '==============================================================<br>';
+					$html= $this-> getHTML($value);					
+					echo $value;
+					if ($html != '') {						
+						//echo ':'. mb_detect_encoding($html) . '<br>';
+						//echo $html-> plaintext.'<br>';
+					}
 					$filteredHTML= $this-> filterHTML($html);
-					$this-> exportFile($filteredHTML);
+					//echo $filteredHTML-> plaintext;
+					$str = preg_replace('/\s\s+/', '',$filteredHTML-> plaintext);
+					//$str = preg_replace("/&#?[a-z0-9]{2,8};/i","",$str);
+					//echo $str;
+					//echo preg_replace('/[^\x4E00-\x9FFF]+/', '', $str);
+					echo preg_replace('/[^\x{4e00}-\x{9fff}]+/u','', $str);
+					//$this-> exportFile($filteredHTML);
 					break;
 				case 'array':
 					foreach($value as $sourceId){
 						$html= $this-> getHTML($sourceId);
 						$filteredHTML= $this-> filterHTML($html);
-						$this-> exportFile($filteredHTML);
+						//$this-> exportFile($filteredHTML);
 					}
 					break;
 				}
